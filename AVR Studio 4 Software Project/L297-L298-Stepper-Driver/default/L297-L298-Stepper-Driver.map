@@ -1,0 +1,426 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+                              c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o (exit)
+c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+                              serial.o (__do_clear_bss)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+LOAD L297-L298-Stepper-Driver.o
+LOAD serial.o
+LOAD usi_i2c_master.o
+LOAD USI_TWI_Master.o
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25\libm.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25\libc.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x3d8
+ *(.vectors)
+ .vectors       0x00000000       0x26 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+                0x00000026                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000026        0x0 linker stubs
+ *(.trampolines*)
+                0x00000026                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000026        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+                0x00000026                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0x8 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000002e       0x10 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+                0x0000002e                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000003e        0x4 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+ *(.init9)
+ *(.text)
+ .text          0x00000042        0x2 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+                0x00000042                __vector_1
+                0x00000042                __vector_12
+                0x00000042                __bad_interrupt
+                0x00000042                __vector_6
+                0x00000042                __vector_3
+                0x00000042                __vector_11
+                0x00000042                __vector_13
+                0x00000042                __vector_17
+                0x00000042                __vector_5
+                0x00000042                __vector_4
+                0x00000042                __vector_9
+                0x00000042                __vector_2
+                0x00000042                __vector_15
+                0x00000042                __vector_8
+                0x00000042                __vector_14
+                0x00000042                __vector_10
+                0x00000042                __vector_16
+                0x00000042                __vector_18
+ .text          0x00000044       0x6e L297-L298-Stepper-Driver.o
+                0x00000044                setup_l297_clock()
+                0x00000064                main
+ .text          0x000000b2       0xa8 serial.o
+                0x000000f4                serial_available()
+                0x00000108                serial_read()
+                0x000000fa                serial_init(unsigned int)
+                0x000000b2                __vector_7
+                0x00000144                serial_print(char*)
+                0x0000013a                serial_transmit(unsigned char)
+                0x00000134                serial_flush()
+ .text          0x0000015a       0xe0 usi_i2c_master.o
+                0x0000015a                usi_i2c_master_initialize()
+                0x000001da                usi_i2c_master_receive(char*, int)
+                0x00000174                usi_i2c_master_transfer(char)
+                0x00000234                usi_i2c_master_start()
+                0x0000021c                usi_i2c_master_write(char, char*, int)
+                0x000001a8                usi_i2c_master_transmit(char*, int)
+                0x00000228                usi_i2c_master_stop()
+                0x00000222                usi_i2c_master_read(char, char*, int)
+ .text          0x0000023a      0x19a USI_TWI_Master.o
+                0x00000284                USI_TWI_Master_Start()
+                0x0000023a                USI_TWI_Master_Initialise()
+                0x00000250                USI_TWI_Get_State_Info()
+                0x000002ae                USI_TWI_Master_Stop()
+                0x00000256                USI_TWI_Master_Transfer(unsigned char)
+                0x000002d6                USI_TWI_Start_Transceiver_With_Data(unsigned char*, unsigned char)
+                0x000003c0                USI_TWI_Start_Random_Read(unsigned char*, unsigned char)
+                0x000003b8                USI_TWI_Start_Read_Write(unsigned char*, unsigned char)
+ .text          0x000003d4        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+ .text          0x000003d4        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+                0x000003d4                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000003d4        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x000003d4        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+                0x000003d4                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000003d4        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+                0x000003d4                exit
+                0x000003d4                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000003d4        0x4 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000003d8                _etext = .
+
+.data           0x00800060        0x0 load address 0x000003d8
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+ .data          0x00800060        0x0 L297-L298-Stepper-Driver.o
+ .data          0x00800060        0x0 serial.o
+ .data          0x00800060        0x0 usi_i2c_master.o
+ .data          0x00800060        0x0 USI_TWI_Master.o
+ .data          0x00800060        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060       0x12
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800060        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr25/crttn2313.o
+ .bss           0x00800060        0x0 L297-L298-Stepper-Driver.o
+ .bss           0x00800060       0x11 serial.o
+                0x00800070                buffer_pos
+                0x00800060                buffer
+ .bss           0x00800071        0x0 usi_i2c_master.o
+ .bss           0x00800071        0x1 USI_TWI_Master.o
+                0x00800071                USI_TWI_state
+ .bss           0x00800072        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_exit.o)
+ .bss           0x00800072        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr25\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+                0x00800072                PROVIDE (__bss_end, .)
+                0x000003d8                __data_load_start = LOADADDR (.data)
+                0x000003d8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800072        0x0
+                0x00800072                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800072                PROVIDE (__noinit_end, .)
+                0x00800072                _end = .
+                0x00800072                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x80
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 L297-L298-Stepper-Driver.o
+ .debug_aranges
+                0x00000020       0x20 serial.o
+ .debug_aranges
+                0x00000040       0x20 usi_i2c_master.o
+ .debug_aranges
+                0x00000060       0x20 USI_TWI_Master.o
+
+.debug_pubnames
+                0x00000000      0x2c8
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x30 L297-L298-Stepper-Driver.o
+ .debug_pubnames
+                0x00000030       0xa6 serial.o
+ .debug_pubnames
+                0x000000d6       0xe5 usi_i2c_master.o
+ .debug_pubnames
+                0x000001bb      0x10d USI_TWI_Master.o
+
+.debug_info     0x00000000      0xaaf
+ *(.debug_info)
+ .debug_info    0x00000000      0x134 L297-L298-Stepper-Driver.o
+ .debug_info    0x00000134      0x1d4 serial.o
+ .debug_info    0x00000308      0x346 usi_i2c_master.o
+ .debug_info    0x0000064e      0x461 USI_TWI_Master.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x526
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xd4 L297-L298-Stepper-Driver.o
+ .debug_abbrev  0x000000d4      0x152 serial.o
+ .debug_abbrev  0x00000226      0x132 usi_i2c_master.o
+ .debug_abbrev  0x00000358      0x1ce USI_TWI_Master.o
+
+.debug_line     0x00000000      0x9f3
+ *(.debug_line)
+ .debug_line    0x00000000      0x1bd L297-L298-Stepper-Driver.o
+ .debug_line    0x000001bd      0x178 serial.o
+ .debug_line    0x00000335      0x2bf usi_i2c_master.o
+ .debug_line    0x000005f4      0x3ff USI_TWI_Master.o
+
+.debug_frame    0x00000000      0x1d0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x30 L297-L298-Stepper-Driver.o
+ .debug_frame   0x00000030       0x80 serial.o
+ .debug_frame   0x000000b0       0x90 usi_i2c_master.o
+ .debug_frame   0x00000140       0x90 USI_TWI_Master.o
+
+.debug_str      0x00000000      0x659
+ *(.debug_str)
+ .debug_str     0x00000000      0x11f L297-L298-Stepper-Driver.o
+                                0x153 (size before relaxing)
+ .debug_str     0x0000011f       0xee serial.o
+                                0x1cf (size before relaxing)
+ .debug_str     0x0000020d      0x1db usi_i2c_master.o
+                                0x304 (size before relaxing)
+ .debug_str     0x000003e8      0x271 USI_TWI_Master.o
+                                0x3ba (size before relaxing)
+
+.debug_loc      0x00000000      0x35e
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x40 L297-L298-Stepper-Driver.o
+ .debug_loc     0x00000040       0x4e serial.o
+ .debug_loc     0x0000008e      0x130 usi_i2c_master.o
+ .debug_loc     0x000001be      0x1a0 USI_TWI_Master.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(L297-L298-Stepper-Driver.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000       0x90
+ .debug_ranges  0x00000000       0x60 usi_i2c_master.o
+ .debug_ranges  0x00000060       0x30 USI_TWI_Master.o
