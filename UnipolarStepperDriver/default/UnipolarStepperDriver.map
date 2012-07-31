@@ -14,15 +14,27 @@ c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eew
 Allocating common symbols
 Common symbol       size              file
 
+step_mode           0x1               UnipolarStepperDriver.o
+serial_i2c_buffer   0x8               UnipolarStepperDriver.o
+step_enabled        0x1               UnipolarStepperDriver.o
 usi_i2c_slave_address
-                    0x1               usi_i2c.o
+                    0x1               usi_i2c_slave.o
+usi_i2c_slave_internal_address
+                    0x1               usi_i2c_slave.o
+step_max            0x1               UnipolarStepperDriver.o
 USI_I2C_Slave_State
-                    0x1               usi_i2c.o
+                    0x1               usi_i2c_slave.o
 serial_buffer       0x10              serial.o
+USI_Slave_register_buffer
+                    0x10              usi_i2c_slave.o
+step_state          0x1               UnipolarStepperDriver.o
+serial_i2c_buffer_pos
+                    0x1               UnipolarStepperDriver.o
+step_dir            0x1               UnipolarStepperDriver.o
 USI_I2C_Master_State
-                    0x1               usi_i2c.o
-usi_i2c_mode        0x1               usi_i2c.o
-usi_i2c_buffer      0x10              usi_i2c.o
+                    0x1               usi_i2c_master.o
+usi_i2c_mode        0x1               usi_i2c_slave.o
+step_current        0x1               UnipolarStepperDriver.o
 
 Memory Configuration
 
@@ -40,7 +52,8 @@ Linker script and memory map
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn2313.o
 LOAD UnipolarStepperDriver.o
 LOAD serial.o
-LOAD usi_i2c.o
+LOAD usi_i2c_slave.o
+LOAD usi_i2c_master.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
@@ -135,7 +148,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x68a
+.text           0x00000000      0x712
  *(.vectors)
  .vectors       0x00000000       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn2313.o
                 0x00000000                __vectors
@@ -204,56 +217,53 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00000058                __vector_8
                 0x00000058                __vector_10
                 0x00000058                __vector_18
- .text          0x0000005a      0x2f4 UnipolarStepperDriver.o
-                0x0000005a                status_led_on
-                0x0000007a                initialize_timer
-                0x00000166                __vector_13
-                0x0000022a                fill_i2c_buffer_from_serial
-                0x0000005e                status_led_off
-                0x00000316                main
-                0x00000094                __vector_4
-                0x000001a8                process_i2c_message
-                0x0000025a                process_serial_message
-                0x00000062                set_rgb_led
-                0x00000146                __vector_14
- .text          0x0000034e      0x104 serial.o
-                0x00000390                serial_available
-                0x0000043e                serial_print
-                0x00000410                serial_flush
-                0x0000041e                serial_transmit_data
-                0x00000416                serial_transmit_byte
-                0x0000034e                __vector_7
-                0x000003d0                serial_read_buffer
-                0x00000396                serial_init
-                0x000003a4                serial_read
- .text          0x00000452      0x208 usi_i2c.o
-                0x00000478                USI_I2C_Master_Transfer
-                0x00000452                USI_I2C_Init
-                0x00000562                __vector_15
-                0x000004a8                USI_I2C_Master_Transceiver_Start
-                0x0000059c                __vector_16
- .text          0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text          0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
- .text          0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
- .text          0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
- .text          0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
-                0x0000065a                . = ALIGN (0x2)
+ .text          0x0000005a      0x334 UnipolarStepperDriver.o
+                0x00000072                initialize_timer
+                0x000001d6                __vector_13
+                0x00000204                fill_i2c_buffer_from_serial
+                0x00000234                main
+                0x000000ae                __vector_4
+                0x0000005a                set_rgb_led
+                0x000001b6                __vector_14
+ .text          0x0000038e      0x104 serial.o
+                0x000003d0                serial_available
+                0x0000047e                serial_print
+                0x00000450                serial_flush
+                0x0000045e                serial_transmit_data
+                0x00000456                serial_transmit_byte
+                0x0000038e                __vector_7
+                0x00000410                serial_read_buffer
+                0x000003d6                serial_init
+                0x000003e4                serial_read
+ .text          0x00000492      0x15a usi_i2c_slave.o
+                0x00000492                USI_I2C_Init
+                0x000004aa                __vector_15
+                0x000004e0                __vector_16
+ .text          0x000005ec       0xf6 usi_i2c_master.o
+                0x00000616                USI_I2C_Master_Start_Transmission
+                0x000005ec                USI_I2C_Master_Transfer
+ .text          0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text          0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .text          0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
+ .text          0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
+                0x000006e2                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text.libgcc   0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000065a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000006e2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
  .text.avr-libc
-                0x0000065a       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
-                0x0000065a                __eerd_byte_tn2313
+                0x000006e2       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
+                0x000006e2                __eerd_byte_tn2313
  .text.avr-libc
-                0x0000066a       0x1c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
-                0x0000066a                __eewr_byte_tn2313
-                0x0000066c                __eewr_r18_tn2313
-                0x00000686                . = ALIGN (0x2)
+                0x000006f2       0x1c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
+                0x000006f2                __eewr_byte_tn2313
+                0x000006f4                __eewr_r18_tn2313
+                0x0000070e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000686        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
-                0x00000686                exit
-                0x00000686                _exit
+ .fini9         0x0000070e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x0000070e                exit
+                0x0000070e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -272,71 +282,81 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000686        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .fini0         0x0000070e        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000068a                _etext = .
+                0x00000712                _etext = .
 
-.data           0x00800060        0x6 load address 0x0000068a
+.data           0x00800060       0x10 load address 0x00000712
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn2313.o
- .data          0x00800060        0x5 UnipolarStepperDriver.o
-                0x00800061                step_table
-                0x00800060                step_dir
- .data          0x00800065        0x0 serial.o
- .data          0x00800065        0x0 usi_i2c.o
- .data          0x00800065        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .data          0x00800065        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
- .data          0x00800065        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
- .data          0x00800065        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
- .data          0x00800065        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
+ .data          0x00800060       0x10 UnipolarStepperDriver.o
+                0x00800060                step_table
+ .data          0x00800070        0x0 serial.o
+ .data          0x00800070        0x0 usi_i2c_slave.o
+ .data          0x00800070        0x0 usi_i2c_master.o
+ .data          0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .data          0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .data          0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .data          0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
+ .data          0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800066                . = ALIGN (0x2)
- *fill*         0x00800065        0x1 00
-                0x00800066                _edata = .
-                0x00800066                PROVIDE (__data_end, .)
+                0x00800070                . = ALIGN (0x2)
+                0x00800070                _edata = .
+                0x00800070                PROVIDE (__data_end, .)
 
-.bss            0x00800066       0x2c
-                0x00800066                PROVIDE (__bss_start, .)
+.bss            0x00800070       0x3b
+                0x00800070                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800066        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn2313.o
- .bss           0x00800066        0x6 UnipolarStepperDriver.o
-                0x0080006a                step_count
-                0x00800067                step_enabled
-                0x00800066                step_state
-                0x00800068                step_speed
- .bss           0x0080006c        0x1 serial.o
-                0x0080006c                serial_buffer_pos
- .bss           0x0080006d        0x1 usi_i2c.o
-                0x0080006d                usi_i2c_buffer_pos
- .bss           0x0080006e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .bss           0x0080006e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
- .bss           0x0080006e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
- .bss           0x0080006e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
- .bss           0x0080006e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
+ .bss           0x00800070        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn2313.o
+ .bss           0x00800070        0x4 UnipolarStepperDriver.o
+                0x00800070                step_count
+                0x00800072                step_compare
+ .bss           0x00800074        0x1 serial.o
+                0x00800074                serial_buffer_pos
+ .bss           0x00800075        0x2 usi_i2c_slave.o
+                0x00800075                USI_Slave_internal_address
+                0x00800076                USI_Slave_internal_address_set
+ .bss           0x00800077        0x0 usi_i2c_master.o
+ .bss           0x00800077        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .bss           0x00800077        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .bss           0x00800077        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .bss           0x00800077        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny2313.o)
+ .bss           0x00800077        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny2313.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x0080006e       0x10 serial.o
-                0x0080006e                serial_buffer
- COMMON         0x0080007e       0x14 usi_i2c.o
-                0x0080007e                usi_i2c_slave_address
-                0x0080007f                USI_I2C_Slave_State
-                0x00800080                USI_I2C_Master_State
-                0x00800081                usi_i2c_mode
-                0x00800082                usi_i2c_buffer
-                0x00800092                PROVIDE (__bss_end, .)
-                0x0000068a                __data_load_start = LOADADDR (.data)
-                0x00000690                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800077        0xf UnipolarStepperDriver.o
+                0x00800077                step_mode
+                0x00800078                serial_i2c_buffer
+                0x00800080                step_enabled
+                0x00800081                step_max
+                0x00800082                step_state
+                0x00800083                serial_i2c_buffer_pos
+                0x00800084                step_dir
+                0x00800085                step_current
+ COMMON         0x00800086       0x10 serial.o
+                0x00800086                serial_buffer
+ COMMON         0x00800096       0x14 usi_i2c_slave.o
+                0x00800096                usi_i2c_slave_address
+                0x00800097                usi_i2c_slave_internal_address
+                0x00800098                USI_I2C_Slave_State
+                0x00800099                USI_Slave_register_buffer
+                0x008000a9                usi_i2c_mode
+ COMMON         0x008000aa        0x1 usi_i2c_master.o
+                0x008000aa                USI_I2C_Master_State
+                0x008000ab                PROVIDE (__bss_end, .)
+                0x00000712                __data_load_start = LOADADDR (.data)
+                0x00000722                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800092        0x0
-                0x00800092                PROVIDE (__noinit_start, .)
+.noinit         0x008000ab        0x0
+                0x008000ab                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800092                PROVIDE (__noinit_end, .)
-                0x00800092                _end = .
-                0x00800092                PROVIDE (__heap_start, .)
+                0x008000ab                PROVIDE (__noinit_end, .)
+                0x008000ab                _end = .
+                0x008000ab                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -387,69 +407,81 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x60
+.debug_aranges  0x00000000       0x80
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 UnipolarStepperDriver.o
  .debug_aranges
                 0x00000020       0x20 serial.o
  .debug_aranges
-                0x00000040       0x20 usi_i2c.o
+                0x00000040       0x20 usi_i2c_slave.o
+ .debug_aranges
+                0x00000060       0x20 usi_i2c_master.o
 
 .debug_pubnames
-                0x00000000      0x334
+                0x00000000      0x3a6
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000      0x141 UnipolarStepperDriver.o
+                0x00000000      0x147 UnipolarStepperDriver.o
  .debug_pubnames
-                0x00000141       0xe9 serial.o
+                0x00000147       0xe9 serial.o
  .debug_pubnames
-                0x0000022a      0x10a usi_i2c.o
+                0x00000230      0x109 usi_i2c_slave.o
+ .debug_pubnames
+                0x00000339       0x6d usi_i2c_master.o
 
-.debug_info     0x00000000      0xa0e
+.debug_info     0x00000000      0xa81
  *(.debug_info)
- .debug_info    0x00000000      0x309 UnipolarStepperDriver.o
- .debug_info    0x00000309      0x27e serial.o
- .debug_info    0x00000587      0x487 usi_i2c.o
+ .debug_info    0x00000000      0x32a UnipolarStepperDriver.o
+ .debug_info    0x0000032a      0x27e serial.o
+ .debug_info    0x000005a8      0x179 usi_i2c_slave.o
+ .debug_info    0x00000721      0x360 usi_i2c_master.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x4e5
+.debug_abbrev   0x00000000      0x540
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x184 UnipolarStepperDriver.o
- .debug_abbrev  0x00000184      0x1aa serial.o
- .debug_abbrev  0x0000032e      0x1b7 usi_i2c.o
+ .debug_abbrev  0x00000000      0x1a9 UnipolarStepperDriver.o
+ .debug_abbrev  0x000001a9      0x1aa serial.o
+ .debug_abbrev  0x00000353       0xb0 usi_i2c_slave.o
+ .debug_abbrev  0x00000403      0x13d usi_i2c_master.o
 
-.debug_line     0x00000000      0x8ee
+.debug_line     0x00000000      0xa08
  *(.debug_line)
- .debug_line    0x00000000      0x326 UnipolarStepperDriver.o
- .debug_line    0x00000326      0x1cf serial.o
- .debug_line    0x000004f5      0x3f9 usi_i2c.o
+ .debug_line    0x00000000      0x36f UnipolarStepperDriver.o
+ .debug_line    0x0000036f      0x1cf serial.o
+ .debug_line    0x0000053e      0x1dc usi_i2c_slave.o
+ .debug_line    0x0000071a      0x2ee usi_i2c_master.o
 
-.debug_frame    0x00000000      0x1c0
+.debug_frame    0x00000000      0x190
  *(.debug_frame)
- .debug_frame   0x00000000       0xc0 UnipolarStepperDriver.o
- .debug_frame   0x000000c0       0xa0 serial.o
- .debug_frame   0x00000160       0x60 usi_i2c.o
+ .debug_frame   0x00000000       0x80 UnipolarStepperDriver.o
+ .debug_frame   0x00000080       0xa0 serial.o
+ .debug_frame   0x00000120       0x40 usi_i2c_slave.o
+ .debug_frame   0x00000160       0x30 usi_i2c_master.o
 
-.debug_str      0x00000000      0x496
+.debug_str      0x00000000      0x530
  *(.debug_str)
- .debug_str     0x00000000      0x1c8 UnipolarStepperDriver.o
-                                0x208 (size before relaxing)
- .debug_str     0x000001c8       0xc7 serial.o
-                                0x18a (size before relaxing)
- .debug_str     0x0000028f      0x207 usi_i2c.o
-                                0x305 (size before relaxing)
+ .debug_str     0x00000000      0x207 UnipolarStepperDriver.o
+                                0x247 (size before relaxing)
+ .debug_str     0x00000207       0xc7 serial.o
+                                0x19b (size before relaxing)
+ .debug_str     0x000002ce      0x14f usi_i2c_slave.o
+                                0x256 (size before relaxing)
+ .debug_str     0x0000041d      0x113 usi_i2c_master.o
+                                0x1e2 (size before relaxing)
 
-.debug_loc      0x00000000      0x2e7
+.debug_loc      0x00000000      0x2cc
  *(.debug_loc)
  .debug_loc     0x00000000       0xe1 UnipolarStepperDriver.o
  .debug_loc     0x000000e1       0xc6 serial.o
- .debug_loc     0x000001a7      0x140 usi_i2c.o
+ .debug_loc     0x000001a7       0x13 usi_i2c_slave.o
+ .debug_loc     0x000001ba      0x112 usi_i2c_master.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(UnipolarStepperDriver.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000       0x90
- .debug_ranges  0x00000000       0x90 usi_i2c.o
+.debug_ranges   0x00000000       0xc8
+ .debug_ranges  0x00000000       0x38 UnipolarStepperDriver.o
+ .debug_ranges  0x00000038       0x90 usi_i2c_master.o

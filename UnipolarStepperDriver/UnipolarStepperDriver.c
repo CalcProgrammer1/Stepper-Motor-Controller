@@ -16,41 +16,50 @@
 #include <avr/eeprom.h>
 
 #include "serial.h"
-#include "usi_i2c.h"
+#include "usi_i2c_slave.h"
+#include "usi_i2c_master.h"
 
-volatile signed char	step_state		= 0;
-volatile char 			step_dir		= 1;
-volatile char 			step_enabled	= 0;
-volatile int			step_speed		= 0;
+char			step_current;
+char			step_state;
+char			step_max;
+
+char					step_mode;
+char 					step_dir;
+char 					step_enabled;
 volatile int			step_count		= 0;
+volatile int			step_compare	= 0;
 
-extern char usi_i2c_buffer[];
-extern char usi_i2c_buffer_pos;
+char serial_i2c_buffer[8];
+char serial_i2c_buffer_pos;
+
 extern char usi_i2c_slave_address;
-
+extern char* USI_Slave_register_buffer[];
 //Normal
-//volatile char step_table[4] = { 0b00001000, 0b00100000, 0b00010000, 0b01000000};
-
-//Half-stepping
-//volatile char step_table[8] = { 0b00001000, 0b00101000, 0b00100000, 0b00110000, 0b00010000, 0b01010000, 0b01000000, 0b01001000};
+volatile char step_table[16] = {0b00001000, 0b00100000, 0b00010000, 0b01000000,
 
 //Double Phase
-volatile char step_table[4] = { 0b00101000, 0b00110000, 0b01010000, 0b01001000};
+							    0b00101000, 0b00110000, 0b01010000, 0b01001000,
+								
+//Half Stepping
+								0b00001000, 0b00101000, 0b00100000, 0b00110000,
+								
+								0b00010000, 0b01010000, 0b01000000, 0b01001000};
 
-void status_led_on();
-void status_led_off();
+inline void status_led_on();
+inline void status_led_off();
+inline void process_serial_message();
+
 void set_rgb_led(char led);
 void initialize_timer();
-void process_serial_message();
 void process_i2c_message();
 void fill_i2c_buffer_from_serial(char len, char addr, char rw);
 
-void status_led_on()
+inline void status_led_on()
 {
 	PORTD |= 0b00000100;
 }
 
-void status_led_off()
+inline void status_led_off()
 {
 	PORTD &= 0b11111011;
 }
@@ -64,40 +73,71 @@ void set_rgb_led(char led)
 
 void initialize_timer()
 {
-  OCR1A = 0; //Step Update value
+	//OCR1A - Timer 1 Compare A - Used for motor speed
+	OCR1A = step_compare;
 
-  OCR0A = 32;
-  OCR0B = 127;
+	//OCR2A/B - Timer 0 Compare A/B - Used for motor PWM
+	OCR0A = 20;
+	OCR0B = 100;
 
-  //Enable output compare A interrupt for timers 0 and 1
-  TIMSK = (1<<OCIE1A | 1<<OCIE0A | 1<<OCIE0B);
+	//Reset step states
+	step_current = 0x00000000;
+	step_state = 0;
+	step_mode = 0;
+	step_dir = 1;
+	step_enabled = 0;
+	step_max = 3;
 
-  //Set frequency
-  //CPU freq is 16MHz or 16,000,000 Hz
-  //Timer freq is CPU/64 or 250,000 Hz
-  //For 50Hz refresh rate, it should count to
-  //250,000/50 which = 5000
-  TCCR1B = (1<<CS10 | 1<<CS11 | 0<<CS12);
+	//Enable output compare A interrupt for timers 0 and 1
+	TIMSK = (1<<OCIE1A | 1<<OCIE0A | 1<<OCIE0B);
 
-  TCCR0B = (0<<CS00 | 1<<CS01 | 0<<CS02);
+	TCCR1B = (1<<CS10 | 1<<CS11 | 0<<CS12);
+
+	TCCR0B = (0<<CS00 | 1<<CS01 | 0<<CS02);
 }
 
 ISR(TIMER1_COMPA_vect)
 {
 	if(step_enabled == 1)
 	{
-		if(step_dir == 1)
+		if(step_count > 0)
 		{
-			set_rgb_led(0b00000010);
-  			if(++step_state > 3) step_state = 0;
+			if(step_dir == 1)
+			{
+				set_rgb_led(0b00000010);
+  				if(++step_state > step_max) step_state = 0;
+			}
+			else
+			{
+				set_rgb_led(0b00000001);
+				if(--step_state < 0) step_state = step_max;
+			}
+		
+			if(step_enabled == 1)
+			{
+				if(step_mode == 0)
+				{
+					 step_current = step_table[step_state];
+					 step_max = 3;
+				}
+				else if(step_mode == 1)
+				{
+					step_current = step_table[step_state+4];
+					step_max = 3;
+				}
+				else if(step_mode == 2)
+				{
+					step_current = step_table[step_state+8];
+					step_max = 7;
+				}
+			}
+			step_count--;
 		}
-		else
+		if(step_count == 0)
 		{
-			set_rgb_led(0b00000001);
-			if(--step_state < 0) step_state = 3;
+			step_enabled = 0;
+			set_rgb_led(0b00000100);
 		}
-
-		if(step_count-- < 0) step_enabled = 0;
 	}
 	else
 	{
@@ -117,7 +157,7 @@ ISR(TIMER0_COMPA_vect)
 {	
 	if(step_enabled == 1)
 	{
-		PORTD |= step_table[step_state];
+		PORTD |= step_current;
 	}
 }
 
@@ -131,22 +171,41 @@ int main()
 	serial_init(65);
 
 	usi_i2c_slave_address = eeprom_read_byte((uint8_t*)1);
-	USI_I2C_Init(0, usi_i2c_slave_address);
+	if((usi_i2c_slave_address < 0x04) || (usi_i2c_slave_address > 0x77))
+	{
+		//If the stored address is out of range, default to 0x66.
+		usi_i2c_slave_address = 0x66;
+	}
 
+	//USI_I2C_Init(usi_i2c_slave_address);
+
+//master init
+	DDR_USI  |= (1 << PORT_USI_SDA) | (1 << PORT_USI_SCL);
+	PORT_USI |= (1 << PORT_USI_SCL);
+	PORT_USI |= (1 << PORT_USI_SDA);
+		USIDR = 0xFF;
+		USICR = (0 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (1 << USICLK) | (0 << USITC);
+		USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF)  | (1 << USIDC)  | (0x00 << USICNT0);
+	
+	USI_Slave_register_buffer[0] = (unsigned char*)&step_compare;
+	USI_Slave_register_buffer[1] = (unsigned char*)(&step_compare)+1;
+	USI_Slave_register_buffer[2] = (unsigned char*)&step_count;
+	USI_Slave_register_buffer[3] = (unsigned char*)(&step_count)+1;
+	USI_Slave_register_buffer[4] = &step_dir;
+	USI_Slave_register_buffer[5] = &step_mode;
+	USI_Slave_register_buffer[6] = &step_enabled;
+	USI_Slave_register_buffer[7] = &step_enabled;
 	while(1)
 	{
-		process_serial_message();
-		if(usi_i2c_buffer_pos > 3)
+		if(step_compare != OCR1A)
 		{
-			status_led_on();
-			process_i2c_message();
-			usi_i2c_buffer_pos = 0;
-			status_led_off();
+			OCR1A = step_compare;
 		}
+		process_serial_message();
 	}
 }
 
-void process_serial_message()
+inline void process_serial_message()
 {
 	if(serial_available() > 2)
 	{
@@ -156,37 +215,7 @@ void process_serial_message()
 		serial_read_buffer(buffer, 3);
 
 		switch(buffer[0])
-		{
-	/*		case 0x01:
-				OCR1A = buffer[1] << 8 | buffer[2];
-				break;
-
-			case 0x02:
-				step_count = buffer[1] << 8 | buffer[2];
-				break;
-
-			case 0x03:
-				step_dir = buffer[1];
-				break;
-
-			case 0x04:
-				step_enabled = buffer[1];
-				break;
-*/
-			//Set I2C Mode (0 - slave, 1 - master)
-			case 0x21:
-				if(buffer[1] == 0)
-				{
-					//Slave Initialize
-					USI_I2C_Init(0,usi_i2c_slave_address);
-				}
-				else
-				{
-					//Master Initialize
-					USI_I2C_Init(1,0);
-				}
-				break;
-			
+		{		
 			//Set I2C Address
 			case 0x22:
 				usi_i2c_slave_address = buffer[1];
@@ -201,20 +230,19 @@ void process_serial_message()
 			//Send I2C Write
 			case 0x24:
 				fill_i2c_buffer_from_serial(buffer[1], buffer[2], 0);
-				USI_I2C_Master_Transceiver_Start(usi_i2c_buffer, buffer[1]+1);
-				process_i2c_message();
+				serial_transmit_byte(USI_I2C_Master_Start_Transmission(serial_i2c_buffer, buffer[1]+1));
 				break;
 
 			//Send I2C Read
 			case 0x25:
 				{
-				char addr = buffer[2] << 1 | 1;
-				usi_i2c_buffer[0] = addr;
-				USI_I2C_Master_Transceiver_Start(usi_i2c_buffer, buffer[1]+1);
-				for(char i = 1; i <= buffer[1]; i++)
-				{
-					serial_transmit_byte(usi_i2c_buffer[i]);
-				}
+					char addr = buffer[2] << 1 | 1;
+					serial_i2c_buffer[0] = addr;
+					USI_I2C_Master_Start_Transmission(serial_i2c_buffer, buffer[1]+1);
+					for(char i = 1; i <= buffer[1]; i++)
+					{
+						serial_transmit_byte(serial_i2c_buffer[i]);
+					}
 				}
 				break;
 		}
@@ -222,34 +250,6 @@ void process_serial_message()
 	}
 }
 
-void process_i2c_message()
-{
-	if(usi_i2c_buffer[0] >> 1 == usi_i2c_slave_address || usi_i2c_buffer[0] >> 1 == 0)
-	{
-		switch(usi_i2c_buffer[1])
-		{
-			case 0x01:
-				OCR1A = usi_i2c_buffer[2] << 8 | usi_i2c_buffer[3];
-				break;
-
-			case 0x02:
-				step_count = usi_i2c_buffer[2] << 8 | usi_i2c_buffer[3];
-				break;
-
-			case 0x03:
-				step_dir = usi_i2c_buffer[2];
-				break;
-
-			case 0x04:
-				step_enabled = usi_i2c_buffer[2];
-				break;
-			
-			case 0x05:
-				OCR1A = usi_i2c_buffer[2];
-				break;
-		}
-	}
-}
 
 void fill_i2c_buffer_from_serial(char len, char addr, char rw)
 {
@@ -257,11 +257,11 @@ void fill_i2c_buffer_from_serial(char len, char addr, char rw)
 	addr = addr << 1 | rw;
 
 	//Put address into i2c buffer
-	usi_i2c_buffer[0] = addr;
+	serial_i2c_buffer[0] = addr;
 
 	for(char i = 1; i <= len; i++)
 	{
 		while(serial_available() < 1);
-		usi_i2c_buffer[i] = serial_read();
+		serial_i2c_buffer[i] = serial_read();
 	}
 }

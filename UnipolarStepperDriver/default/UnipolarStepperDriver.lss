@@ -3,29 +3,29 @@ UnipolarStepperDriver.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000068a  00000000  00000000  00000094  2**1
+  0 .text         00000712  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000006  00800060  0000068a  0000071e  2**0
+  1 .data         00000010  00800060  00000712  000007a6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000002c  00800066  00800066  00000724  2**0
+  2 .bss          0000003b  00800070  00800070  000007b6  2**0
                   ALLOC
-  3 .debug_aranges 00000060  00000000  00000000  00000724  2**0
+  3 .debug_aranges 00000080  00000000  00000000  000007b6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 00000334  00000000  00000000  00000784  2**0
+  4 .debug_pubnames 000003a6  00000000  00000000  00000836  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000a0e  00000000  00000000  00000ab8  2**0
+  5 .debug_info   00000a81  00000000  00000000  00000bdc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000004e5  00000000  00000000  000014c6  2**0
+  6 .debug_abbrev 00000540  00000000  00000000  0000165d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000008ee  00000000  00000000  000019ab  2**0
+  7 .debug_line   00000a08  00000000  00000000  00001b9d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000001c0  00000000  00000000  0000229c  2**2
+  8 .debug_frame  00000190  00000000  00000000  000025a8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000496  00000000  00000000  0000245c  2**0
+  9 .debug_str    00000530  00000000  00000000  00002738  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000002e7  00000000  00000000  000028f2  2**0
+ 10 .debug_loc    000002cc  00000000  00000000  00002c68  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000090  00000000  00000000  00002bd9  2**0
+ 11 .debug_ranges 000000c8  00000000  00000000  00002f34  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -35,19 +35,19 @@ Disassembly of section .text:
    2:	2a c0       	rjmp	.+84     	; 0x58 <__bad_interrupt>
    4:	29 c0       	rjmp	.+82     	; 0x58 <__bad_interrupt>
    6:	28 c0       	rjmp	.+80     	; 0x58 <__bad_interrupt>
-   8:	45 c0       	rjmp	.+138    	; 0x94 <__vector_4>
+   8:	52 c0       	rjmp	.+164    	; 0xae <__vector_4>
    a:	26 c0       	rjmp	.+76     	; 0x58 <__bad_interrupt>
    c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
-   e:	9f c1       	rjmp	.+830    	; 0x34e <__vector_7>
+   e:	bf c1       	rjmp	.+894    	; 0x38e <__vector_7>
   10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
   12:	22 c0       	rjmp	.+68     	; 0x58 <__bad_interrupt>
   14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
   16:	20 c0       	rjmp	.+64     	; 0x58 <__bad_interrupt>
   18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
-  1a:	a5 c0       	rjmp	.+330    	; 0x166 <__vector_13>
-  1c:	94 c0       	rjmp	.+296    	; 0x146 <__vector_14>
-  1e:	a1 c2       	rjmp	.+1346   	; 0x562 <__vector_15>
-  20:	bd c2       	rjmp	.+1402   	; 0x59c <__vector_16>
+  1a:	dd c0       	rjmp	.+442    	; 0x1d6 <__vector_13>
+  1c:	cc c0       	rjmp	.+408    	; 0x1b6 <__vector_14>
+  1e:	45 c2       	rjmp	.+1162   	; 0x4aa <__vector_15>
+  20:	5f c2       	rjmp	.+1214   	; 0x4e0 <__vector_16>
   22:	1a c0       	rjmp	.+52     	; 0x58 <__bad_interrupt>
   24:	19 c0       	rjmp	.+50     	; 0x58 <__bad_interrupt>
 
@@ -61,8 +61,8 @@ Disassembly of section .text:
   2e:	10 e0       	ldi	r17, 0x00	; 0
   30:	a0 e6       	ldi	r26, 0x60	; 96
   32:	b0 e0       	ldi	r27, 0x00	; 0
-  34:	ea e8       	ldi	r30, 0x8A	; 138
-  36:	f6 e0       	ldi	r31, 0x06	; 6
+  34:	e2 e1       	ldi	r30, 0x12	; 18
+  36:	f7 e0       	ldi	r31, 0x07	; 7
   38:	02 c0       	rjmp	.+4      	; 0x3e <.do_copy_data_start>
 
 0000003a <.do_copy_data_loop>:
@@ -70,13 +70,13 @@ Disassembly of section .text:
   3c:	0d 92       	st	X+, r0
 
 0000003e <.do_copy_data_start>:
-  3e:	a6 36       	cpi	r26, 0x66	; 102
+  3e:	a0 37       	cpi	r26, 0x70	; 112
   40:	b1 07       	cpc	r27, r17
   42:	d9 f7       	brne	.-10     	; 0x3a <.do_copy_data_loop>
 
 00000044 <__do_clear_bss>:
   44:	10 e0       	ldi	r17, 0x00	; 0
-  46:	a6 e6       	ldi	r26, 0x66	; 102
+  46:	a0 e7       	ldi	r26, 0x70	; 112
   48:	b0 e0       	ldi	r27, 0x00	; 0
   4a:	01 c0       	rjmp	.+2      	; 0x4e <.do_clear_bss_start>
 
@@ -84,1456 +84,1549 @@ Disassembly of section .text:
   4c:	1d 92       	st	X+, r1
 
 0000004e <.do_clear_bss_start>:
-  4e:	a2 39       	cpi	r26, 0x92	; 146
+  4e:	ab 3a       	cpi	r26, 0xAB	; 171
   50:	b1 07       	cpc	r27, r17
   52:	e1 f7       	brne	.-8      	; 0x4c <.do_clear_bss_loop>
-  54:	60 d1       	rcall	.+704    	; 0x316 <main>
-  56:	17 c3       	rjmp	.+1582   	; 0x686 <_exit>
+  54:	ef d0       	rcall	.+478    	; 0x234 <main>
+  56:	5b c3       	rjmp	.+1718   	; 0x70e <_exit>
 
 00000058 <__bad_interrupt>:
   58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
 
-0000005a <status_led_on>:
-void process_i2c_message();
-void fill_i2c_buffer_from_serial(char len, char addr, char rw);
-
-void status_led_on()
-{
-	PORTD |= 0b00000100;
-  5a:	92 9a       	sbi	0x12, 2	; 18
-}
-  5c:	08 95       	ret
-
-0000005e <status_led_off>:
-
-void status_led_off()
-{
+0000005a <set_rgb_led>:
 	PORTD &= 0b11111011;
-  5e:	92 98       	cbi	0x12, 2	; 18
 }
-  60:	08 95       	ret
-
-00000062 <set_rgb_led>:
 
 void set_rgb_led(char led)
 {
 	led = led << 2;
-  62:	88 0f       	add	r24, r24
-  64:	88 0f       	add	r24, r24
+  5a:	88 0f       	add	r24, r24
+  5c:	88 0f       	add	r24, r24
 	PORTB |= (led & 0b00011100);
-  66:	28 b3       	in	r18, 0x18	; 24
-  68:	98 2f       	mov	r25, r24
-  6a:	9c 71       	andi	r25, 0x1C	; 28
-  6c:	92 2b       	or	r25, r18
-  6e:	98 bb       	out	0x18, r25	; 24
+  5e:	28 b3       	in	r18, 0x18	; 24
+  60:	98 2f       	mov	r25, r24
+  62:	9c 71       	andi	r25, 0x1C	; 28
+  64:	92 2b       	or	r25, r18
+  66:	98 bb       	out	0x18, r25	; 24
 	PORTB &= (led | 0b11100011);
-  70:	98 b3       	in	r25, 0x18	; 24
-  72:	83 6e       	ori	r24, 0xE3	; 227
-  74:	98 23       	and	r25, r24
-  76:	98 bb       	out	0x18, r25	; 24
+  68:	98 b3       	in	r25, 0x18	; 24
+  6a:	83 6e       	ori	r24, 0xE3	; 227
+  6c:	98 23       	and	r25, r24
+  6e:	98 bb       	out	0x18, r25	; 24
 }
-  78:	08 95       	ret
+  70:	08 95       	ret
 
-0000007a <initialize_timer>:
+00000072 <initialize_timer>:
 
 void initialize_timer()
 {
-  OCR1A = 0; //Step Update value
-  7a:	1b bc       	out	0x2b, r1	; 43
-  7c:	1a bc       	out	0x2a, r1	; 42
+	//OCR1A - Timer 1 Compare A - Used for motor speed
+	OCR1A = step_compare;
+  72:	80 91 72 00 	lds	r24, 0x0072
+  76:	90 91 73 00 	lds	r25, 0x0073
+  7a:	9b bd       	out	0x2b, r25	; 43
+  7c:	8a bd       	out	0x2a, r24	; 42
 
-  OCR0A = 32;
-  7e:	80 e2       	ldi	r24, 0x20	; 32
+	//OCR2A/B - Timer 0 Compare A/B - Used for motor PWM
+	OCR0A = 20;
+  7e:	84 e1       	ldi	r24, 0x14	; 20
   80:	86 bf       	out	0x36, r24	; 54
-  OCR0B = 127;
-  82:	8f e7       	ldi	r24, 0x7F	; 127
+	OCR0B = 100;
+  82:	84 e6       	ldi	r24, 0x64	; 100
   84:	8c bf       	out	0x3c, r24	; 60
 
-  //Enable output compare A interrupt for timers 0 and 1
-  TIMSK = (1<<OCIE1A | 1<<OCIE0A | 1<<OCIE0B);
-  86:	85 e4       	ldi	r24, 0x45	; 69
-  88:	89 bf       	out	0x39, r24	; 57
-  //Set frequency
-  //CPU freq is 16MHz or 16,000,000 Hz
-  //Timer freq is CPU/64 or 250,000 Hz
-  //For 50Hz refresh rate, it should count to
-  //250,000/50 which = 5000
-  TCCR1B = (1<<CS10 | 1<<CS11 | 0<<CS12);
-  8a:	83 e0       	ldi	r24, 0x03	; 3
-  8c:	8e bd       	out	0x2e, r24	; 46
+	//Reset step states
+	step_current = 0x00000000;
+  86:	10 92 85 00 	sts	0x0085, r1
+	step_state = 0;
+  8a:	10 92 82 00 	sts	0x0082, r1
+	step_mode = 0;
+  8e:	10 92 77 00 	sts	0x0077, r1
+	step_dir = 1;
+  92:	81 e0       	ldi	r24, 0x01	; 1
+  94:	80 93 84 00 	sts	0x0084, r24
+	step_enabled = 0;
+  98:	10 92 80 00 	sts	0x0080, r1
+	step_max = 3;
+  9c:	93 e0       	ldi	r25, 0x03	; 3
+  9e:	90 93 81 00 	sts	0x0081, r25
 
-  TCCR0B = (0<<CS00 | 1<<CS01 | 0<<CS02);
-  8e:	82 e0       	ldi	r24, 0x02	; 2
-  90:	83 bf       	out	0x33, r24	; 51
+	//Enable output compare A interrupt for timers 0 and 1
+	TIMSK = (1<<OCIE1A | 1<<OCIE0A | 1<<OCIE0B);
+  a2:	85 e4       	ldi	r24, 0x45	; 69
+  a4:	89 bf       	out	0x39, r24	; 57
+
+	TCCR1B = (1<<CS10 | 1<<CS11 | 0<<CS12);
+  a6:	9e bd       	out	0x2e, r25	; 46
+
+	TCCR0B = (0<<CS00 | 1<<CS01 | 0<<CS02);
+  a8:	82 e0       	ldi	r24, 0x02	; 2
+  aa:	83 bf       	out	0x33, r24	; 51
 }
-  92:	08 95       	ret
+  ac:	08 95       	ret
 
-00000094 <__vector_4>:
+000000ae <__vector_4>:
 
 ISR(TIMER1_COMPA_vect)
 {
-  94:	1f 92       	push	r1
-  96:	0f 92       	push	r0
-  98:	0f b6       	in	r0, 0x3f	; 63
-  9a:	0f 92       	push	r0
-  9c:	11 24       	eor	r1, r1
-  9e:	2f 93       	push	r18
-  a0:	3f 93       	push	r19
-  a2:	4f 93       	push	r20
-  a4:	5f 93       	push	r21
-  a6:	6f 93       	push	r22
-  a8:	7f 93       	push	r23
-  aa:	8f 93       	push	r24
-  ac:	9f 93       	push	r25
-  ae:	af 93       	push	r26
-  b0:	bf 93       	push	r27
-  b2:	ef 93       	push	r30
-  b4:	ff 93       	push	r31
+  ae:	1f 92       	push	r1
+  b0:	0f 92       	push	r0
+  b2:	0f b6       	in	r0, 0x3f	; 63
+  b4:	0f 92       	push	r0
+  b6:	11 24       	eor	r1, r1
+  b8:	2f 93       	push	r18
+  ba:	3f 93       	push	r19
+  bc:	4f 93       	push	r20
+  be:	5f 93       	push	r21
+  c0:	6f 93       	push	r22
+  c2:	7f 93       	push	r23
+  c4:	8f 93       	push	r24
+  c6:	9f 93       	push	r25
+  c8:	af 93       	push	r26
+  ca:	bf 93       	push	r27
+  cc:	ef 93       	push	r30
+  ce:	ff 93       	push	r31
 	if(step_enabled == 1)
-  b6:	80 91 67 00 	lds	r24, 0x0067
-  ba:	81 30       	cpi	r24, 0x01	; 1
-  bc:	79 f5       	brne	.+94     	; 0x11c <__stack+0x3d>
+  d0:	80 91 80 00 	lds	r24, 0x0080
+  d4:	81 30       	cpi	r24, 0x01	; 1
+  d6:	09 f0       	breq	.+2      	; 0xda <__vector_4+0x2c>
+  d8:	59 c0       	rjmp	.+178    	; 0x18c <__stack+0xad>
 	{
-		if(step_dir == 1)
-  be:	80 91 60 00 	lds	r24, 0x0060
-  c2:	81 30       	cpi	r24, 0x01	; 1
-  c4:	71 f4       	brne	.+28     	; 0xe2 <__stack+0x3>
+		if(step_count > 0)
+  da:	80 91 70 00 	lds	r24, 0x0070
+  de:	90 91 71 00 	lds	r25, 0x0071
+  e2:	18 16       	cp	r1, r24
+  e4:	19 06       	cpc	r1, r25
+  e6:	0c f0       	brlt	.+2      	; 0xea <__stack+0xb>
+  e8:	49 c0       	rjmp	.+146    	; 0x17c <__stack+0x9d>
 		{
-			set_rgb_led(0b00000010);
-  c6:	82 e0       	ldi	r24, 0x02	; 2
-  c8:	cc df       	rcall	.-104    	; 0x62 <set_rgb_led>
-  			if(++step_state > 3) step_state = 0;
-  ca:	80 91 66 00 	lds	r24, 0x0066
-  ce:	8f 5f       	subi	r24, 0xFF	; 255
-  d0:	80 93 66 00 	sts	0x0066, r24
-  d4:	80 91 66 00 	lds	r24, 0x0066
-  d8:	84 30       	cpi	r24, 0x04	; 4
-  da:	8c f0       	brlt	.+34     	; 0xfe <__stack+0x1f>
-  dc:	10 92 66 00 	sts	0x0066, r1
-  e0:	0e c0       	rjmp	.+28     	; 0xfe <__stack+0x1f>
+			if(step_dir == 1)
+  ea:	80 91 84 00 	lds	r24, 0x0084
+  ee:	81 30       	cpi	r24, 0x01	; 1
+  f0:	71 f4       	brne	.+28     	; 0x10e <__stack+0x2f>
+			{
+				set_rgb_led(0b00000010);
+  f2:	82 e0       	ldi	r24, 0x02	; 2
+  f4:	b2 df       	rcall	.-156    	; 0x5a <set_rgb_led>
+  				if(++step_state > step_max) step_state = 0;
+  f6:	80 91 82 00 	lds	r24, 0x0082
+  fa:	8f 5f       	subi	r24, 0xFF	; 255
+  fc:	80 93 82 00 	sts	0x0082, r24
+ 100:	90 91 81 00 	lds	r25, 0x0081
+ 104:	98 17       	cp	r25, r24
+ 106:	50 f4       	brcc	.+20     	; 0x11c <__stack+0x3d>
+ 108:	10 92 82 00 	sts	0x0082, r1
+ 10c:	07 c0       	rjmp	.+14     	; 0x11c <__stack+0x3d>
+			}
+			else
+			{
+				set_rgb_led(0b00000001);
+ 10e:	81 e0       	ldi	r24, 0x01	; 1
+ 110:	a4 df       	rcall	.-184    	; 0x5a <set_rgb_led>
+				if(--step_state < 0) step_state = step_max;
+ 112:	80 91 82 00 	lds	r24, 0x0082
+ 116:	81 50       	subi	r24, 0x01	; 1
+ 118:	80 93 82 00 	sts	0x0082, r24
+			}
+		
+			if(step_enabled == 1)
+ 11c:	80 91 80 00 	lds	r24, 0x0080
+ 120:	81 30       	cpi	r24, 0x01	; 1
+ 122:	19 f5       	brne	.+70     	; 0x16a <__stack+0x8b>
+			{
+				if(step_mode == 0)
+ 124:	80 91 77 00 	lds	r24, 0x0077
+ 128:	88 23       	and	r24, r24
+ 12a:	31 f4       	brne	.+12     	; 0x138 <__stack+0x59>
+				{
+					 step_current = step_table[step_state];
+ 12c:	e0 91 82 00 	lds	r30, 0x0082
+ 130:	f0 e0       	ldi	r31, 0x00	; 0
+ 132:	e0 5a       	subi	r30, 0xA0	; 160
+ 134:	ff 4f       	sbci	r31, 0xFF	; 255
+ 136:	07 c0       	rjmp	.+14     	; 0x146 <__stack+0x67>
+					 step_max = 3;
+				}
+				else if(step_mode == 1)
+ 138:	81 30       	cpi	r24, 0x01	; 1
+ 13a:	51 f4       	brne	.+20     	; 0x150 <__stack+0x71>
+				{
+					step_current = step_table[step_state+4];
+ 13c:	e0 91 82 00 	lds	r30, 0x0082
+ 140:	f0 e0       	ldi	r31, 0x00	; 0
+ 142:	ec 59       	subi	r30, 0x9C	; 156
+ 144:	ff 4f       	sbci	r31, 0xFF	; 255
+ 146:	80 81       	ld	r24, Z
+ 148:	80 93 85 00 	sts	0x0085, r24
+					step_max = 3;
+ 14c:	83 e0       	ldi	r24, 0x03	; 3
+ 14e:	0b c0       	rjmp	.+22     	; 0x166 <__stack+0x87>
+				}
+				else if(step_mode == 2)
+ 150:	82 30       	cpi	r24, 0x02	; 2
+ 152:	59 f4       	brne	.+22     	; 0x16a <__stack+0x8b>
+				{
+					step_current = step_table[step_state+8];
+ 154:	e0 91 82 00 	lds	r30, 0x0082
+ 158:	f0 e0       	ldi	r31, 0x00	; 0
+ 15a:	e8 59       	subi	r30, 0x98	; 152
+ 15c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 15e:	80 81       	ld	r24, Z
+ 160:	80 93 85 00 	sts	0x0085, r24
+					step_max = 7;
+ 164:	87 e0       	ldi	r24, 0x07	; 7
+ 166:	80 93 81 00 	sts	0x0081, r24
+				}
+			}
+			step_count--;
+ 16a:	80 91 70 00 	lds	r24, 0x0070
+ 16e:	90 91 71 00 	lds	r25, 0x0071
+ 172:	01 97       	sbiw	r24, 0x01	; 1
+ 174:	90 93 71 00 	sts	0x0071, r25
+ 178:	80 93 70 00 	sts	0x0070, r24
 		}
-		else
+		if(step_count == 0)
+ 17c:	80 91 70 00 	lds	r24, 0x0070
+ 180:	90 91 71 00 	lds	r25, 0x0071
+ 184:	89 2b       	or	r24, r25
+ 186:	21 f4       	brne	.+8      	; 0x190 <__stack+0xb1>
 		{
-			set_rgb_led(0b00000001);
-  e2:	81 e0       	ldi	r24, 0x01	; 1
-  e4:	be df       	rcall	.-132    	; 0x62 <set_rgb_led>
-			if(--step_state < 0) step_state = 3;
-  e6:	80 91 66 00 	lds	r24, 0x0066
-  ea:	81 50       	subi	r24, 0x01	; 1
-  ec:	80 93 66 00 	sts	0x0066, r24
-  f0:	80 91 66 00 	lds	r24, 0x0066
-  f4:	87 ff       	sbrs	r24, 7
-  f6:	03 c0       	rjmp	.+6      	; 0xfe <__stack+0x1f>
-  f8:	83 e0       	ldi	r24, 0x03	; 3
-  fa:	80 93 66 00 	sts	0x0066, r24
+			step_enabled = 0;
+ 188:	10 92 80 00 	sts	0x0080, r1
+			set_rgb_led(0b00000100);
 		}
-
-		if(step_count-- < 0) step_enabled = 0;
-  fe:	80 91 6a 00 	lds	r24, 0x006A
- 102:	90 91 6b 00 	lds	r25, 0x006B
- 106:	01 97       	sbiw	r24, 0x01	; 1
- 108:	90 93 6b 00 	sts	0x006B, r25
- 10c:	80 93 6a 00 	sts	0x006A, r24
- 110:	01 96       	adiw	r24, 0x01	; 1
- 112:	97 ff       	sbrs	r25, 7
- 114:	05 c0       	rjmp	.+10     	; 0x120 <__stack+0x41>
- 116:	10 92 67 00 	sts	0x0067, r1
- 11a:	02 c0       	rjmp	.+4      	; 0x120 <__stack+0x41>
 	}
 	else
 	{
 		set_rgb_led(0b00000100);
- 11c:	84 e0       	ldi	r24, 0x04	; 4
- 11e:	a1 df       	rcall	.-190    	; 0x62 <set_rgb_led>
+ 18c:	84 e0       	ldi	r24, 0x04	; 4
+ 18e:	65 df       	rcall	.-310    	; 0x5a <set_rgb_led>
 	}
 
 	TCNT1 = 0;
- 120:	1d bc       	out	0x2d, r1	; 45
- 122:	1c bc       	out	0x2c, r1	; 44
+ 190:	1d bc       	out	0x2d, r1	; 45
+ 192:	1c bc       	out	0x2c, r1	; 44
 }
- 124:	ff 91       	pop	r31
- 126:	ef 91       	pop	r30
- 128:	bf 91       	pop	r27
- 12a:	af 91       	pop	r26
- 12c:	9f 91       	pop	r25
- 12e:	8f 91       	pop	r24
- 130:	7f 91       	pop	r23
- 132:	6f 91       	pop	r22
- 134:	5f 91       	pop	r21
- 136:	4f 91       	pop	r20
- 138:	3f 91       	pop	r19
- 13a:	2f 91       	pop	r18
- 13c:	0f 90       	pop	r0
- 13e:	0f be       	out	0x3f, r0	; 63
- 140:	0f 90       	pop	r0
- 142:	1f 90       	pop	r1
- 144:	18 95       	reti
+ 194:	ff 91       	pop	r31
+ 196:	ef 91       	pop	r30
+ 198:	bf 91       	pop	r27
+ 19a:	af 91       	pop	r26
+ 19c:	9f 91       	pop	r25
+ 19e:	8f 91       	pop	r24
+ 1a0:	7f 91       	pop	r23
+ 1a2:	6f 91       	pop	r22
+ 1a4:	5f 91       	pop	r21
+ 1a6:	4f 91       	pop	r20
+ 1a8:	3f 91       	pop	r19
+ 1aa:	2f 91       	pop	r18
+ 1ac:	0f 90       	pop	r0
+ 1ae:	0f be       	out	0x3f, r0	; 63
+ 1b0:	0f 90       	pop	r0
+ 1b2:	1f 90       	pop	r1
+ 1b4:	18 95       	reti
 
-00000146 <__vector_14>:
+000001b6 <__vector_14>:
 
 ISR(TIMER0_COMPB_vect)
 {
- 146:	1f 92       	push	r1
- 148:	0f 92       	push	r0
- 14a:	0f b6       	in	r0, 0x3f	; 63
- 14c:	0f 92       	push	r0
- 14e:	11 24       	eor	r1, r1
- 150:	8f 93       	push	r24
+ 1b6:	1f 92       	push	r1
+ 1b8:	0f 92       	push	r0
+ 1ba:	0f b6       	in	r0, 0x3f	; 63
+ 1bc:	0f 92       	push	r0
+ 1be:	11 24       	eor	r1, r1
+ 1c0:	8f 93       	push	r24
 	PORTD &= 0b10000111;
- 152:	82 b3       	in	r24, 0x12	; 18
- 154:	87 78       	andi	r24, 0x87	; 135
- 156:	82 bb       	out	0x12, r24	; 18
+ 1c2:	82 b3       	in	r24, 0x12	; 18
+ 1c4:	87 78       	andi	r24, 0x87	; 135
+ 1c6:	82 bb       	out	0x12, r24	; 18
 	TCNT0 = 0;
- 158:	12 be       	out	0x32, r1	; 50
+ 1c8:	12 be       	out	0x32, r1	; 50
 }
- 15a:	8f 91       	pop	r24
- 15c:	0f 90       	pop	r0
- 15e:	0f be       	out	0x3f, r0	; 63
- 160:	0f 90       	pop	r0
- 162:	1f 90       	pop	r1
- 164:	18 95       	reti
+ 1ca:	8f 91       	pop	r24
+ 1cc:	0f 90       	pop	r0
+ 1ce:	0f be       	out	0x3f, r0	; 63
+ 1d0:	0f 90       	pop	r0
+ 1d2:	1f 90       	pop	r1
+ 1d4:	18 95       	reti
 
-00000166 <__vector_13>:
+000001d6 <__vector_13>:
 
 ISR(TIMER0_COMPA_vect)
 {	
- 166:	1f 92       	push	r1
- 168:	0f 92       	push	r0
- 16a:	0f b6       	in	r0, 0x3f	; 63
- 16c:	0f 92       	push	r0
- 16e:	11 24       	eor	r1, r1
- 170:	8f 93       	push	r24
- 172:	9f 93       	push	r25
- 174:	ef 93       	push	r30
- 176:	ff 93       	push	r31
+ 1d6:	1f 92       	push	r1
+ 1d8:	0f 92       	push	r0
+ 1da:	0f b6       	in	r0, 0x3f	; 63
+ 1dc:	0f 92       	push	r0
+ 1de:	11 24       	eor	r1, r1
+ 1e0:	8f 93       	push	r24
+ 1e2:	9f 93       	push	r25
 	if(step_enabled == 1)
- 178:	80 91 67 00 	lds	r24, 0x0067
- 17c:	81 30       	cpi	r24, 0x01	; 1
- 17e:	59 f4       	brne	.+22     	; 0x196 <__vector_13+0x30>
+ 1e4:	80 91 80 00 	lds	r24, 0x0080
+ 1e8:	81 30       	cpi	r24, 0x01	; 1
+ 1ea:	29 f4       	brne	.+10     	; 0x1f6 <__vector_13+0x20>
 	{
-		PORTD |= step_table[step_state];
- 180:	82 b3       	in	r24, 0x12	; 18
- 182:	e0 91 66 00 	lds	r30, 0x0066
- 186:	ff 27       	eor	r31, r31
- 188:	e7 fd       	sbrc	r30, 7
- 18a:	f0 95       	com	r31
- 18c:	ef 59       	subi	r30, 0x9F	; 159
- 18e:	ff 4f       	sbci	r31, 0xFF	; 255
- 190:	90 81       	ld	r25, Z
- 192:	98 2b       	or	r25, r24
- 194:	92 bb       	out	0x12, r25	; 18
+		PORTD |= step_current;
+ 1ec:	82 b3       	in	r24, 0x12	; 18
+ 1ee:	90 91 85 00 	lds	r25, 0x0085
+ 1f2:	89 2b       	or	r24, r25
+ 1f4:	82 bb       	out	0x12, r24	; 18
 	}
 }
- 196:	ff 91       	pop	r31
- 198:	ef 91       	pop	r30
- 19a:	9f 91       	pop	r25
- 19c:	8f 91       	pop	r24
- 19e:	0f 90       	pop	r0
- 1a0:	0f be       	out	0x3f, r0	; 63
- 1a2:	0f 90       	pop	r0
- 1a4:	1f 90       	pop	r1
- 1a6:	18 95       	reti
+ 1f6:	9f 91       	pop	r25
+ 1f8:	8f 91       	pop	r24
+ 1fa:	0f 90       	pop	r0
+ 1fc:	0f be       	out	0x3f, r0	; 63
+ 1fe:	0f 90       	pop	r0
+ 200:	1f 90       	pop	r1
+ 202:	18 95       	reti
 
-000001a8 <process_i2c_message>:
+00000204 <fill_i2c_buffer_from_serial>:
 	}
 }
 
-void process_i2c_message()
-{
-	if(usi_i2c_buffer[0] >> 1 == usi_i2c_slave_address || usi_i2c_buffer[0] >> 1 == 0)
- 1a8:	90 91 82 00 	lds	r25, 0x0082
- 1ac:	96 95       	lsr	r25
- 1ae:	80 91 7e 00 	lds	r24, 0x007E
- 1b2:	98 17       	cp	r25, r24
- 1b4:	11 f0       	breq	.+4      	; 0x1ba <process_i2c_message+0x12>
- 1b6:	99 23       	and	r25, r25
- 1b8:	b9 f5       	brne	.+110    	; 0x228 <process_i2c_message+0x80>
-	{
-		switch(usi_i2c_buffer[1])
- 1ba:	80 91 83 00 	lds	r24, 0x0083
- 1be:	83 30       	cpi	r24, 0x03	; 3
- 1c0:	21 f1       	breq	.+72     	; 0x20a <process_i2c_message+0x62>
- 1c2:	84 30       	cpi	r24, 0x04	; 4
- 1c4:	28 f4       	brcc	.+10     	; 0x1d0 <process_i2c_message+0x28>
- 1c6:	81 30       	cpi	r24, 0x01	; 1
- 1c8:	41 f0       	breq	.+16     	; 0x1da <process_i2c_message+0x32>
- 1ca:	82 30       	cpi	r24, 0x02	; 2
- 1cc:	69 f5       	brne	.+90     	; 0x228 <process_i2c_message+0x80>
- 1ce:	10 c0       	rjmp	.+32     	; 0x1f0 <process_i2c_message+0x48>
- 1d0:	84 30       	cpi	r24, 0x04	; 4
- 1d2:	01 f1       	breq	.+64     	; 0x214 <process_i2c_message+0x6c>
- 1d4:	85 30       	cpi	r24, 0x05	; 5
- 1d6:	41 f5       	brne	.+80     	; 0x228 <process_i2c_message+0x80>
- 1d8:	22 c0       	rjmp	.+68     	; 0x21e <process_i2c_message+0x76>
-		{
-			case 0x01:
-				OCR1A = usi_i2c_buffer[2] << 8 | usi_i2c_buffer[3];
- 1da:	90 91 84 00 	lds	r25, 0x0084
- 1de:	80 e0       	ldi	r24, 0x00	; 0
- 1e0:	20 91 85 00 	lds	r18, 0x0085
- 1e4:	30 e0       	ldi	r19, 0x00	; 0
- 1e6:	82 2b       	or	r24, r18
- 1e8:	93 2b       	or	r25, r19
- 1ea:	9b bd       	out	0x2b, r25	; 43
- 1ec:	8a bd       	out	0x2a, r24	; 42
- 1ee:	08 95       	ret
-				break;
-
-			case 0x02:
-				step_count = usi_i2c_buffer[2] << 8 | usi_i2c_buffer[3];
- 1f0:	90 91 84 00 	lds	r25, 0x0084
- 1f4:	80 e0       	ldi	r24, 0x00	; 0
- 1f6:	20 91 85 00 	lds	r18, 0x0085
- 1fa:	30 e0       	ldi	r19, 0x00	; 0
- 1fc:	82 2b       	or	r24, r18
- 1fe:	93 2b       	or	r25, r19
- 200:	90 93 6b 00 	sts	0x006B, r25
- 204:	80 93 6a 00 	sts	0x006A, r24
- 208:	08 95       	ret
-				break;
-
-			case 0x03:
-				step_dir = usi_i2c_buffer[2];
- 20a:	80 91 84 00 	lds	r24, 0x0084
- 20e:	80 93 60 00 	sts	0x0060, r24
- 212:	08 95       	ret
-				break;
-
-			case 0x04:
-				step_enabled = usi_i2c_buffer[2];
- 214:	80 91 84 00 	lds	r24, 0x0084
- 218:	80 93 67 00 	sts	0x0067, r24
- 21c:	08 95       	ret
-				break;
-			
-			case 0x05:
-				OCR1A = usi_i2c_buffer[2];
- 21e:	80 91 84 00 	lds	r24, 0x0084
- 222:	90 e0       	ldi	r25, 0x00	; 0
- 224:	9b bd       	out	0x2b, r25	; 43
- 226:	8a bd       	out	0x2a, r24	; 42
- 228:	08 95       	ret
-
-0000022a <fill_i2c_buffer_from_serial>:
-		}
-	}
-}
 
 void fill_i2c_buffer_from_serial(char len, char addr, char rw)
 {
- 22a:	0f 93       	push	r16
- 22c:	1f 93       	push	r17
- 22e:	08 2f       	mov	r16, r24
+ 204:	0f 93       	push	r16
+ 206:	1f 93       	push	r17
+ 208:	08 2f       	mov	r16, r24
 	//Set R/W bit of address
 	addr = addr << 1 | rw;
- 230:	66 0f       	add	r22, r22
- 232:	64 2b       	or	r22, r20
+ 20a:	66 0f       	add	r22, r22
+ 20c:	64 2b       	or	r22, r20
 
 	//Put address into i2c buffer
-	usi_i2c_buffer[0] = addr;
- 234:	60 93 82 00 	sts	0x0082, r22
- 238:	11 e0       	ldi	r17, 0x01	; 1
- 23a:	0a c0       	rjmp	.+20     	; 0x250 <fill_i2c_buffer_from_serial+0x26>
+	serial_i2c_buffer[0] = addr;
+ 20e:	60 93 78 00 	sts	0x0078, r22
+ 212:	11 e0       	ldi	r17, 0x01	; 1
+ 214:	0a c0       	rjmp	.+20     	; 0x22a <fill_i2c_buffer_from_serial+0x26>
 
 	for(char i = 1; i <= len; i++)
 	{
 		while(serial_available() < 1);
- 23c:	a9 d0       	rcall	.+338    	; 0x390 <serial_available>
- 23e:	88 23       	and	r24, r24
- 240:	e9 f3       	breq	.-6      	; 0x23c <fill_i2c_buffer_from_serial+0x12>
-		usi_i2c_buffer[i] = serial_read();
- 242:	b0 d0       	rcall	.+352    	; 0x3a4 <serial_read>
- 244:	e1 2f       	mov	r30, r17
- 246:	f0 e0       	ldi	r31, 0x00	; 0
- 248:	ee 57       	subi	r30, 0x7E	; 126
- 24a:	ff 4f       	sbci	r31, 0xFF	; 255
- 24c:	80 83       	st	Z, r24
+ 216:	dc d0       	rcall	.+440    	; 0x3d0 <serial_available>
+ 218:	88 23       	and	r24, r24
+ 21a:	e9 f3       	breq	.-6      	; 0x216 <fill_i2c_buffer_from_serial+0x12>
+		serial_i2c_buffer[i] = serial_read();
+ 21c:	e3 d0       	rcall	.+454    	; 0x3e4 <serial_read>
+ 21e:	e1 2f       	mov	r30, r17
+ 220:	f0 e0       	ldi	r31, 0x00	; 0
+ 222:	e8 58       	subi	r30, 0x88	; 136
+ 224:	ff 4f       	sbci	r31, 0xFF	; 255
+ 226:	80 83       	st	Z, r24
 	addr = addr << 1 | rw;
 
 	//Put address into i2c buffer
-	usi_i2c_buffer[0] = addr;
+	serial_i2c_buffer[0] = addr;
 
 	for(char i = 1; i <= len; i++)
- 24e:	1f 5f       	subi	r17, 0xFF	; 255
- 250:	01 17       	cp	r16, r17
- 252:	a0 f7       	brcc	.-24     	; 0x23c <fill_i2c_buffer_from_serial+0x12>
+ 228:	1f 5f       	subi	r17, 0xFF	; 255
+ 22a:	01 17       	cp	r16, r17
+ 22c:	a0 f7       	brcc	.-24     	; 0x216 <fill_i2c_buffer_from_serial+0x12>
 	{
 		while(serial_available() < 1);
-		usi_i2c_buffer[i] = serial_read();
+		serial_i2c_buffer[i] = serial_read();
 	}
 }
- 254:	1f 91       	pop	r17
- 256:	0f 91       	pop	r16
- 258:	08 95       	ret
+ 22e:	1f 91       	pop	r17
+ 230:	0f 91       	pop	r16
+ 232:	08 95       	ret
 
-0000025a <process_serial_message>:
-		}
+00000234 <main>:
+		PORTD |= step_current;
 	}
 }
 
-void process_serial_message()
+int main()
 {
- 25a:	1f 93       	push	r17
- 25c:	df 93       	push	r29
- 25e:	cf 93       	push	r28
- 260:	00 d0       	rcall	.+0      	; 0x262 <process_serial_message+0x8>
- 262:	0f 92       	push	r0
- 264:	cd b7       	in	r28, 0x3d	; 61
- 266:	de b7       	in	r29, 0x3e	; 62
-	if(serial_available() > 2)
- 268:	93 d0       	rcall	.+294    	; 0x390 <serial_available>
- 26a:	83 30       	cpi	r24, 0x03	; 3
- 26c:	08 f4       	brcc	.+2      	; 0x270 <process_serial_message+0x16>
- 26e:	4c c0       	rjmp	.+152    	; 0x308 <process_serial_message+0xae>
-void process_i2c_message();
-void fill_i2c_buffer_from_serial(char len, char addr, char rw);
+ 234:	ef 92       	push	r14
+ 236:	ff 92       	push	r15
+ 238:	1f 93       	push	r17
+ 23a:	df 93       	push	r29
+ 23c:	cf 93       	push	r28
+ 23e:	00 d0       	rcall	.+0      	; 0x240 <main+0xc>
+ 240:	0f 92       	push	r0
+ 242:	cd b7       	in	r28, 0x3d	; 61
+ 244:	de b7       	in	r29, 0x3e	; 62
+	DDRB = 0b00011100;
+ 246:	8c e1       	ldi	r24, 0x1C	; 28
+ 248:	87 bb       	out	0x17, r24	; 23
+	DDRD = 0b01111100;
+ 24a:	8c e7       	ldi	r24, 0x7C	; 124
+ 24c:	81 bb       	out	0x11, r24	; 17
 
-void status_led_on()
-{
-	PORTD |= 0b00000100;
- 270:	92 9a       	sbi	0x12, 2	; 18
+	sei();
+ 24e:	78 94       	sei
+	initialize_timer();
+ 250:	10 df       	rcall	.-480    	; 0x72 <initialize_timer>
+	serial_init(65);
+ 252:	81 e4       	ldi	r24, 0x41	; 65
+ 254:	90 e0       	ldi	r25, 0x00	; 0
+ 256:	bf d0       	rcall	.+382    	; 0x3d6 <serial_init>
+
+	usi_i2c_slave_address = eeprom_read_byte((uint8_t*)1);
+ 258:	81 e0       	ldi	r24, 0x01	; 1
+ 25a:	90 e0       	ldi	r25, 0x00	; 0
+ 25c:	42 d2       	rcall	.+1156   	; 0x6e2 <__eerd_byte_tn2313>
+ 25e:	80 93 96 00 	sts	0x0096, r24
+	if((usi_i2c_slave_address < 0x04) || (usi_i2c_slave_address > 0x77))
+ 262:	84 50       	subi	r24, 0x04	; 4
+ 264:	84 37       	cpi	r24, 0x74	; 116
+ 266:	18 f0       	brcs	.+6      	; 0x26e <main+0x3a>
+	{
+		//If the stored address is out of range, default to 0x66.
+		usi_i2c_slave_address = 0x66;
+ 268:	86 e6       	ldi	r24, 0x66	; 102
+ 26a:	80 93 96 00 	sts	0x0096, r24
+	}
+
+	//USI_I2C_Init(usi_i2c_slave_address);
+
+//master init
+	DDR_USI  |= (1 << PORT_USI_SDA) | (1 << PORT_USI_SCL);
+ 26e:	87 b3       	in	r24, 0x17	; 23
+ 270:	80 6a       	ori	r24, 0xA0	; 160
+ 272:	87 bb       	out	0x17, r24	; 23
+	PORT_USI |= (1 << PORT_USI_SCL);
+ 274:	c7 9a       	sbi	0x18, 7	; 24
+	PORT_USI |= (1 << PORT_USI_SDA);
+ 276:	c5 9a       	sbi	0x18, 5	; 24
+		USIDR = 0xFF;
+ 278:	8f ef       	ldi	r24, 0xFF	; 255
+ 27a:	8f b9       	out	0x0f, r24	; 15
+		USICR = (0 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (1 << USICLK) | (0 << USITC);
+ 27c:	8a e2       	ldi	r24, 0x2A	; 42
+ 27e:	8d b9       	out	0x0d, r24	; 13
+		USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF)  | (1 << USIDC)  | (0x00 << USICNT0);
+ 280:	80 ef       	ldi	r24, 0xF0	; 240
+ 282:	8e b9       	out	0x0e, r24	; 14
+	
+	USI_Slave_register_buffer[0] = (unsigned char*)&step_compare;
+ 284:	82 e7       	ldi	r24, 0x72	; 114
+ 286:	90 e0       	ldi	r25, 0x00	; 0
+ 288:	90 93 9a 00 	sts	0x009A, r25
+ 28c:	80 93 99 00 	sts	0x0099, r24
+	USI_Slave_register_buffer[1] = (unsigned char*)(&step_compare)+1;
+ 290:	01 96       	adiw	r24, 0x01	; 1
+ 292:	90 93 9c 00 	sts	0x009C, r25
+ 296:	80 93 9b 00 	sts	0x009B, r24
+	USI_Slave_register_buffer[2] = (unsigned char*)&step_count;
+ 29a:	80 e7       	ldi	r24, 0x70	; 112
+ 29c:	90 e0       	ldi	r25, 0x00	; 0
+ 29e:	90 93 9e 00 	sts	0x009E, r25
+ 2a2:	80 93 9d 00 	sts	0x009D, r24
+	USI_Slave_register_buffer[3] = (unsigned char*)(&step_count)+1;
+ 2a6:	01 96       	adiw	r24, 0x01	; 1
+ 2a8:	90 93 a0 00 	sts	0x00A0, r25
+ 2ac:	80 93 9f 00 	sts	0x009F, r24
+	USI_Slave_register_buffer[4] = &step_dir;
+ 2b0:	84 e8       	ldi	r24, 0x84	; 132
+ 2b2:	90 e0       	ldi	r25, 0x00	; 0
+ 2b4:	90 93 a2 00 	sts	0x00A2, r25
+ 2b8:	80 93 a1 00 	sts	0x00A1, r24
+	USI_Slave_register_buffer[5] = &step_mode;
+ 2bc:	87 e7       	ldi	r24, 0x77	; 119
+ 2be:	90 e0       	ldi	r25, 0x00	; 0
+ 2c0:	90 93 a4 00 	sts	0x00A4, r25
+ 2c4:	80 93 a3 00 	sts	0x00A3, r24
+	USI_Slave_register_buffer[6] = &step_enabled;
+ 2c8:	80 e8       	ldi	r24, 0x80	; 128
+ 2ca:	90 e0       	ldi	r25, 0x00	; 0
+ 2cc:	90 93 a6 00 	sts	0x00A6, r25
+ 2d0:	80 93 a5 00 	sts	0x00A5, r24
+	USI_Slave_register_buffer[7] = &step_enabled;
+ 2d4:	90 93 a8 00 	sts	0x00A8, r25
+ 2d8:	80 93 a7 00 	sts	0x00A7, r24
 	if(serial_available() > 2)
 	{
 		status_led_on();
 		
 		char buffer[3];
 		serial_read_buffer(buffer, 3);
- 272:	ce 01       	movw	r24, r28
- 274:	01 96       	adiw	r24, 0x01	; 1
- 276:	63 e0       	ldi	r22, 0x03	; 3
- 278:	70 e0       	ldi	r23, 0x00	; 0
- 27a:	aa d0       	rcall	.+340    	; 0x3d0 <serial_read_buffer>
+ 2dc:	7e 01       	movw	r14, r28
+ 2de:	08 94       	sec
+ 2e0:	e1 1c       	adc	r14, r1
+ 2e2:	f1 1c       	adc	r15, r1
+	USI_Slave_register_buffer[5] = &step_mode;
+	USI_Slave_register_buffer[6] = &step_enabled;
+	USI_Slave_register_buffer[7] = &step_enabled;
+	while(1)
+	{
+		if(step_compare != OCR1A)
+ 2e4:	20 91 72 00 	lds	r18, 0x0072
+ 2e8:	30 91 73 00 	lds	r19, 0x0073
+ 2ec:	8a b5       	in	r24, 0x2a	; 42
+ 2ee:	9b b5       	in	r25, 0x2b	; 43
+ 2f0:	28 17       	cp	r18, r24
+ 2f2:	39 07       	cpc	r19, r25
+ 2f4:	31 f0       	breq	.+12     	; 0x302 <main+0xce>
+		{
+			OCR1A = step_compare;
+ 2f6:	80 91 72 00 	lds	r24, 0x0072
+ 2fa:	90 91 73 00 	lds	r25, 0x0073
+ 2fe:	9b bd       	out	0x2b, r25	; 43
+ 300:	8a bd       	out	0x2a, r24	; 42
+	}
+}
+
+inline void process_serial_message()
+{
+	if(serial_available() > 2)
+ 302:	66 d0       	rcall	.+204    	; 0x3d0 <serial_available>
+ 304:	83 30       	cpi	r24, 0x03	; 3
+ 306:	70 f3       	brcs	.-36     	; 0x2e4 <main+0xb0>
+void process_i2c_message();
+void fill_i2c_buffer_from_serial(char len, char addr, char rw);
+
+inline void status_led_on()
+{
+	PORTD |= 0b00000100;
+ 308:	92 9a       	sbi	0x12, 2	; 18
+	if(serial_available() > 2)
+	{
+		status_led_on();
+		
+		char buffer[3];
+		serial_read_buffer(buffer, 3);
+ 30a:	c7 01       	movw	r24, r14
+ 30c:	63 e0       	ldi	r22, 0x03	; 3
+ 30e:	70 e0       	ldi	r23, 0x00	; 0
+ 310:	7f d0       	rcall	.+254    	; 0x410 <serial_read_buffer>
 
 		switch(buffer[0])
- 27c:	89 81       	ldd	r24, Y+1	; 0x01
- 27e:	83 32       	cpi	r24, 0x23	; 35
- 280:	e9 f0       	breq	.+58     	; 0x2bc <process_serial_message+0x62>
- 282:	84 32       	cpi	r24, 0x24	; 36
- 284:	28 f4       	brcc	.+10     	; 0x290 <process_serial_message+0x36>
- 286:	81 32       	cpi	r24, 0x21	; 33
- 288:	41 f0       	breq	.+16     	; 0x29a <process_serial_message+0x40>
- 28a:	82 32       	cpi	r24, 0x22	; 34
- 28c:	e1 f5       	brne	.+120    	; 0x306 <process_serial_message+0xac>
- 28e:	0f c0       	rjmp	.+30     	; 0x2ae <process_serial_message+0x54>
- 290:	84 32       	cpi	r24, 0x24	; 36
- 292:	c1 f0       	breq	.+48     	; 0x2c4 <process_serial_message+0x6a>
- 294:	85 32       	cpi	r24, 0x25	; 37
- 296:	b9 f5       	brne	.+110    	; 0x306 <process_serial_message+0xac>
- 298:	20 c0       	rjmp	.+64     	; 0x2da <process_serial_message+0x80>
-				step_enabled = buffer[1];
-				break;
-*/
-			//Set I2C Mode (0 - slave, 1 - master)
-			case 0x21:
-				if(buffer[1] == 0)
- 29a:	8a 81       	ldd	r24, Y+2	; 0x02
- 29c:	88 23       	and	r24, r24
- 29e:	19 f4       	brne	.+6      	; 0x2a6 <process_serial_message+0x4c>
-				{
-					//Slave Initialize
-					USI_I2C_Init(0,usi_i2c_slave_address);
- 2a0:	60 91 7e 00 	lds	r22, 0x007E
- 2a4:	02 c0       	rjmp	.+4      	; 0x2aa <process_serial_message+0x50>
-				}
-				else
-				{
-					//Master Initialize
-					USI_I2C_Init(1,0);
- 2a6:	81 e0       	ldi	r24, 0x01	; 1
- 2a8:	60 e0       	ldi	r22, 0x00	; 0
- 2aa:	d3 d0       	rcall	.+422    	; 0x452 <USI_I2C_Init>
- 2ac:	2c c0       	rjmp	.+88     	; 0x306 <process_serial_message+0xac>
-				}
-				break;
-			
+ 312:	89 81       	ldd	r24, Y+1	; 0x01
+ 314:	83 32       	cpi	r24, 0x23	; 35
+ 316:	89 f0       	breq	.+34     	; 0x33a <main+0x106>
+ 318:	84 32       	cpi	r24, 0x24	; 36
+ 31a:	18 f4       	brcc	.+6      	; 0x322 <main+0xee>
+ 31c:	82 32       	cpi	r24, 0x22	; 34
+ 31e:	a9 f5       	brne	.+106    	; 0x38a <main+0x156>
+ 320:	05 c0       	rjmp	.+10     	; 0x32c <main+0xf8>
+ 322:	84 32       	cpi	r24, 0x24	; 36
+ 324:	69 f0       	breq	.+26     	; 0x340 <main+0x10c>
+ 326:	85 32       	cpi	r24, 0x25	; 37
+ 328:	81 f5       	brne	.+96     	; 0x38a <main+0x156>
+ 32a:	17 c0       	rjmp	.+46     	; 0x35a <main+0x126>
+		{		
 			//Set I2C Address
 			case 0x22:
 				usi_i2c_slave_address = buffer[1];
- 2ae:	6a 81       	ldd	r22, Y+2	; 0x02
- 2b0:	60 93 7e 00 	sts	0x007E, r22
+ 32c:	6a 81       	ldd	r22, Y+2	; 0x02
+ 32e:	60 93 96 00 	sts	0x0096, r22
 				eeprom_write_byte((uint8_t*)1, usi_i2c_slave_address);
- 2b4:	81 e0       	ldi	r24, 0x01	; 1
- 2b6:	90 e0       	ldi	r25, 0x00	; 0
- 2b8:	d8 d1       	rcall	.+944    	; 0x66a <__eewr_byte_tn2313>
- 2ba:	25 c0       	rjmp	.+74     	; 0x306 <process_serial_message+0xac>
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	90 e0       	ldi	r25, 0x00	; 0
+ 336:	dd d1       	rcall	.+954    	; 0x6f2 <__eewr_byte_tn2313>
+ 338:	28 c0       	rjmp	.+80     	; 0x38a <main+0x156>
 				break;
 
 			//Read I2C Address
 			case 0x23:
 				serial_transmit_byte(usi_i2c_slave_address);
- 2bc:	80 91 7e 00 	lds	r24, 0x007E
- 2c0:	aa d0       	rcall	.+340    	; 0x416 <serial_transmit_byte>
- 2c2:	21 c0       	rjmp	.+66     	; 0x306 <process_serial_message+0xac>
+ 33a:	80 91 96 00 	lds	r24, 0x0096
+ 33e:	0b c0       	rjmp	.+22     	; 0x356 <main+0x122>
 				break;
 
 			//Send I2C Write
 			case 0x24:
 				fill_i2c_buffer_from_serial(buffer[1], buffer[2], 0);
- 2c4:	8a 81       	ldd	r24, Y+2	; 0x02
- 2c6:	6b 81       	ldd	r22, Y+3	; 0x03
- 2c8:	40 e0       	ldi	r20, 0x00	; 0
- 2ca:	af df       	rcall	.-162    	; 0x22a <fill_i2c_buffer_from_serial>
-				USI_I2C_Master_Transceiver_Start(usi_i2c_buffer, buffer[1]+1);
- 2cc:	6a 81       	ldd	r22, Y+2	; 0x02
- 2ce:	6f 5f       	subi	r22, 0xFF	; 255
- 2d0:	82 e8       	ldi	r24, 0x82	; 130
- 2d2:	90 e0       	ldi	r25, 0x00	; 0
- 2d4:	e9 d0       	rcall	.+466    	; 0x4a8 <USI_I2C_Master_Transceiver_Start>
-				process_i2c_message();
- 2d6:	68 df       	rcall	.-304    	; 0x1a8 <process_i2c_message>
- 2d8:	16 c0       	rjmp	.+44     	; 0x306 <process_serial_message+0xac>
+ 340:	8a 81       	ldd	r24, Y+2	; 0x02
+ 342:	6b 81       	ldd	r22, Y+3	; 0x03
+ 344:	40 e0       	ldi	r20, 0x00	; 0
+ 346:	5e df       	rcall	.-324    	; 0x204 <fill_i2c_buffer_from_serial>
+				serial_transmit_byte(USI_I2C_Master_Start_Transmission(serial_i2c_buffer, buffer[1]+1));
+ 348:	6a 81       	ldd	r22, Y+2	; 0x02
+ 34a:	70 e0       	ldi	r23, 0x00	; 0
+ 34c:	6f 5f       	subi	r22, 0xFF	; 255
+ 34e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 350:	88 e7       	ldi	r24, 0x78	; 120
+ 352:	90 e0       	ldi	r25, 0x00	; 0
+ 354:	60 d1       	rcall	.+704    	; 0x616 <USI_I2C_Master_Start_Transmission>
+ 356:	7f d0       	rcall	.+254    	; 0x456 <serial_transmit_byte>
+ 358:	18 c0       	rjmp	.+48     	; 0x38a <main+0x156>
 
 			//Send I2C Read
 			case 0x25:
 				{
-				char addr = buffer[2] << 1 | 1;
-				usi_i2c_buffer[0] = addr;
- 2da:	8b 81       	ldd	r24, Y+3	; 0x03
- 2dc:	88 0f       	add	r24, r24
- 2de:	81 60       	ori	r24, 0x01	; 1
- 2e0:	80 93 82 00 	sts	0x0082, r24
-				USI_I2C_Master_Transceiver_Start(usi_i2c_buffer, buffer[1]+1);
- 2e4:	6a 81       	ldd	r22, Y+2	; 0x02
- 2e6:	6f 5f       	subi	r22, 0xFF	; 255
- 2e8:	82 e8       	ldi	r24, 0x82	; 130
- 2ea:	90 e0       	ldi	r25, 0x00	; 0
- 2ec:	dd d0       	rcall	.+442    	; 0x4a8 <USI_I2C_Master_Transceiver_Start>
- 2ee:	11 e0       	ldi	r17, 0x01	; 1
- 2f0:	07 c0       	rjmp	.+14     	; 0x300 <process_serial_message+0xa6>
-				for(char i = 1; i <= buffer[1]; i++)
-				{
-					serial_transmit_byte(usi_i2c_buffer[i]);
- 2f2:	e1 2f       	mov	r30, r17
- 2f4:	f0 e0       	ldi	r31, 0x00	; 0
- 2f6:	ee 57       	subi	r30, 0x7E	; 126
- 2f8:	ff 4f       	sbci	r31, 0xFF	; 255
- 2fa:	80 81       	ld	r24, Z
- 2fc:	8c d0       	rcall	.+280    	; 0x416 <serial_transmit_byte>
+					char addr = buffer[2] << 1 | 1;
+					serial_i2c_buffer[0] = addr;
+ 35a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 35c:	88 0f       	add	r24, r24
+ 35e:	81 60       	ori	r24, 0x01	; 1
+ 360:	80 93 78 00 	sts	0x0078, r24
+					USI_I2C_Master_Start_Transmission(serial_i2c_buffer, buffer[1]+1);
+ 364:	6a 81       	ldd	r22, Y+2	; 0x02
+ 366:	70 e0       	ldi	r23, 0x00	; 0
+ 368:	6f 5f       	subi	r22, 0xFF	; 255
+ 36a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 36c:	88 e7       	ldi	r24, 0x78	; 120
+ 36e:	90 e0       	ldi	r25, 0x00	; 0
+ 370:	52 d1       	rcall	.+676    	; 0x616 <USI_I2C_Master_Start_Transmission>
+ 372:	11 e0       	ldi	r17, 0x01	; 1
+ 374:	07 c0       	rjmp	.+14     	; 0x384 <main+0x150>
+					for(char i = 1; i <= buffer[1]; i++)
+					{
+						serial_transmit_byte(serial_i2c_buffer[i]);
+ 376:	e1 2f       	mov	r30, r17
+ 378:	f0 e0       	ldi	r31, 0x00	; 0
+ 37a:	e8 58       	subi	r30, 0x88	; 136
+ 37c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 37e:	80 81       	ld	r24, Z
+ 380:	6a d0       	rcall	.+212    	; 0x456 <serial_transmit_byte>
 			case 0x25:
 				{
-				char addr = buffer[2] << 1 | 1;
-				usi_i2c_buffer[0] = addr;
-				USI_I2C_Master_Transceiver_Start(usi_i2c_buffer, buffer[1]+1);
-				for(char i = 1; i <= buffer[1]; i++)
- 2fe:	1f 5f       	subi	r17, 0xFF	; 255
- 300:	8a 81       	ldd	r24, Y+2	; 0x02
- 302:	81 17       	cp	r24, r17
- 304:	b0 f7       	brcc	.-20     	; 0x2f2 <process_serial_message+0x98>
+					char addr = buffer[2] << 1 | 1;
+					serial_i2c_buffer[0] = addr;
+					USI_I2C_Master_Start_Transmission(serial_i2c_buffer, buffer[1]+1);
+					for(char i = 1; i <= buffer[1]; i++)
+ 382:	1f 5f       	subi	r17, 0xFF	; 255
+ 384:	8a 81       	ldd	r24, Y+2	; 0x02
+ 386:	81 17       	cp	r24, r17
+ 388:	b0 f7       	brcc	.-20     	; 0x376 <main+0x142>
 	PORTD |= 0b00000100;
 }
 
-void status_led_off()
+inline void status_led_off()
 {
 	PORTD &= 0b11111011;
- 306:	92 98       	cbi	0x12, 2	; 18
-				}
-				break;
-		}
-		status_led_off();	
-	}
-}
- 308:	0f 90       	pop	r0
- 30a:	0f 90       	pop	r0
- 30c:	0f 90       	pop	r0
- 30e:	cf 91       	pop	r28
- 310:	df 91       	pop	r29
- 312:	1f 91       	pop	r17
- 314:	08 95       	ret
+ 38a:	92 98       	cbi	0x12, 2	; 18
+ 38c:	ab cf       	rjmp	.-170    	; 0x2e4 <main+0xb0>
 
-00000316 <main>:
-	}
-}
-
-int main()
-{
-	DDRB = 0b00011100;
- 316:	8c e1       	ldi	r24, 0x1C	; 28
- 318:	87 bb       	out	0x17, r24	; 23
-	DDRD = 0b01111100;
- 31a:	8c e7       	ldi	r24, 0x7C	; 124
- 31c:	81 bb       	out	0x11, r24	; 17
-
-	sei();
- 31e:	78 94       	sei
-	initialize_timer();
- 320:	ac de       	rcall	.-680    	; 0x7a <initialize_timer>
-	serial_init(65);
- 322:	81 e4       	ldi	r24, 0x41	; 65
- 324:	90 e0       	ldi	r25, 0x00	; 0
- 326:	37 d0       	rcall	.+110    	; 0x396 <serial_init>
-
-	usi_i2c_slave_address = eeprom_read_byte((uint8_t*)1);
- 328:	81 e0       	ldi	r24, 0x01	; 1
- 32a:	90 e0       	ldi	r25, 0x00	; 0
- 32c:	96 d1       	rcall	.+812    	; 0x65a <__eerd_byte_tn2313>
- 32e:	68 2f       	mov	r22, r24
- 330:	80 93 7e 00 	sts	0x007E, r24
-	USI_I2C_Init(0, usi_i2c_slave_address);
- 334:	80 e0       	ldi	r24, 0x00	; 0
- 336:	8d d0       	rcall	.+282    	; 0x452 <USI_I2C_Init>
-
-	while(1)
-	{
-		process_serial_message();
- 338:	90 df       	rcall	.-224    	; 0x25a <process_serial_message>
-		if(usi_i2c_buffer_pos > 3)
- 33a:	80 91 6d 00 	lds	r24, 0x006D
- 33e:	84 30       	cpi	r24, 0x04	; 4
- 340:	d8 f3       	brcs	.-10     	; 0x338 <main+0x22>
-void process_i2c_message();
-void fill_i2c_buffer_from_serial(char len, char addr, char rw);
-
-void status_led_on()
-{
-	PORTD |= 0b00000100;
- 342:	92 9a       	sbi	0x12, 2	; 18
-	{
-		process_serial_message();
-		if(usi_i2c_buffer_pos > 3)
-		{
-			status_led_on();
-			process_i2c_message();
- 344:	31 df       	rcall	.-414    	; 0x1a8 <process_i2c_message>
-			usi_i2c_buffer_pos = 0;
- 346:	10 92 6d 00 	sts	0x006D, r1
-	PORTD |= 0b00000100;
-}
-
-void status_led_off()
-{
-	PORTD &= 0b11111011;
- 34a:	92 98       	cbi	0x12, 2	; 18
- 34c:	f5 cf       	rjmp	.-22     	; 0x338 <main+0x22>
-
-0000034e <__vector_7>:
+0000038e <__vector_7>:
 unsigned char serial_buffer[SERIAL_BUFFER_LENGTH]; //Serial buffer
 unsigned char serial_buffer_pos = 0; //Current use of buffer
 
 //USART Receive interrupt pushes the incoming byte into the buffer
 ISR(USART_RX_vect)
 {
- 34e:	1f 92       	push	r1
- 350:	0f 92       	push	r0
- 352:	0f b6       	in	r0, 0x3f	; 63
- 354:	0f 92       	push	r0
- 356:	11 24       	eor	r1, r1
- 358:	8f 93       	push	r24
- 35a:	9f 93       	push	r25
- 35c:	ef 93       	push	r30
- 35e:	ff 93       	push	r31
+ 38e:	1f 92       	push	r1
+ 390:	0f 92       	push	r0
+ 392:	0f b6       	in	r0, 0x3f	; 63
+ 394:	0f 92       	push	r0
+ 396:	11 24       	eor	r1, r1
+ 398:	8f 93       	push	r24
+ 39a:	9f 93       	push	r25
+ 39c:	ef 93       	push	r30
+ 39e:	ff 93       	push	r31
   serial_buffer[serial_buffer_pos] = UDR;
- 360:	80 91 6c 00 	lds	r24, 0x006C
- 364:	9c b1       	in	r25, 0x0c	; 12
- 366:	e8 2f       	mov	r30, r24
- 368:	f0 e0       	ldi	r31, 0x00	; 0
- 36a:	e2 59       	subi	r30, 0x92	; 146
- 36c:	ff 4f       	sbci	r31, 0xFF	; 255
- 36e:	90 83       	st	Z, r25
+ 3a0:	80 91 74 00 	lds	r24, 0x0074
+ 3a4:	9c b1       	in	r25, 0x0c	; 12
+ 3a6:	e8 2f       	mov	r30, r24
+ 3a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3aa:	ea 57       	subi	r30, 0x7A	; 122
+ 3ac:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3ae:	90 83       	st	Z, r25
   
   if(++serial_buffer_pos > SERIAL_BUFFER_LENGTH)
- 370:	8f 5f       	subi	r24, 0xFF	; 255
- 372:	80 93 6c 00 	sts	0x006C, r24
- 376:	81 31       	cpi	r24, 0x11	; 17
- 378:	10 f0       	brcs	.+4      	; 0x37e <__vector_7+0x30>
+ 3b0:	8f 5f       	subi	r24, 0xFF	; 255
+ 3b2:	80 93 74 00 	sts	0x0074, r24
+ 3b6:	81 31       	cpi	r24, 0x11	; 17
+ 3b8:	10 f0       	brcs	.+4      	; 0x3be <__vector_7+0x30>
   {
     serial_buffer_pos = 0;
- 37a:	10 92 6c 00 	sts	0x006C, r1
+ 3ba:	10 92 74 00 	sts	0x0074, r1
   }
 }
- 37e:	ff 91       	pop	r31
- 380:	ef 91       	pop	r30
- 382:	9f 91       	pop	r25
- 384:	8f 91       	pop	r24
- 386:	0f 90       	pop	r0
- 388:	0f be       	out	0x3f, r0	; 63
- 38a:	0f 90       	pop	r0
- 38c:	1f 90       	pop	r1
- 38e:	18 95       	reti
+ 3be:	ff 91       	pop	r31
+ 3c0:	ef 91       	pop	r30
+ 3c2:	9f 91       	pop	r25
+ 3c4:	8f 91       	pop	r24
+ 3c6:	0f 90       	pop	r0
+ 3c8:	0f be       	out	0x3f, r0	; 63
+ 3ca:	0f 90       	pop	r0
+ 3cc:	1f 90       	pop	r1
+ 3ce:	18 95       	reti
 
-00000390 <serial_available>:
+000003d0 <serial_available>:
 
 unsigned char serial_available()
 {
   return serial_buffer_pos;
 }
- 390:	80 91 6c 00 	lds	r24, 0x006C
- 394:	08 95       	ret
+ 3d0:	80 91 74 00 	lds	r24, 0x0074
+ 3d4:	08 95       	ret
 
-00000396 <serial_init>:
+000003d6 <serial_init>:
 
 void serial_init(unsigned int baud)
 {
 	//Set baud rate
 	UBRRH = (unsigned char) (baud >> 8);
- 396:	92 b9       	out	0x02, r25	; 2
+ 3d6:	92 b9       	out	0x02, r25	; 2
 	UBRRL = (unsigned char) (baud);
- 398:	89 b9       	out	0x09, r24	; 9
+ 3d8:	89 b9       	out	0x09, r24	; 9
 
 	//Set frame format: 8 data, no parity, 2 stop bits
 	UCSRC = (0<<UMSEL) | (0<<UPM0) | (0<<USBS) | (3<<UCSZ0);
- 39a:	86 e0       	ldi	r24, 0x06	; 6
- 39c:	83 b9       	out	0x03, r24	; 3
+ 3da:	86 e0       	ldi	r24, 0x06	; 6
+ 3dc:	83 b9       	out	0x03, r24	; 3
 
 	//Enable receiver and transmitter
 	UCSRB = (1<<RXCIE | 1<<RXEN) | (1<<TXEN);
- 39e:	88 e9       	ldi	r24, 0x98	; 152
- 3a0:	8a b9       	out	0x0a, r24	; 10
+ 3de:	88 e9       	ldi	r24, 0x98	; 152
+ 3e0:	8a b9       	out	0x0a, r24	; 10
 }
- 3a2:	08 95       	ret
+ 3e2:	08 95       	ret
 
-000003a4 <serial_read>:
+000003e4 <serial_read>:
 
 //Buffered read pops the first byte off the buffer
 unsigned char serial_read()
 {
   if(serial_buffer_pos == 0)
- 3a4:	90 91 6c 00 	lds	r25, 0x006C
- 3a8:	99 23       	and	r25, r25
- 3aa:	11 f4       	brne	.+4      	; 0x3b0 <serial_read+0xc>
- 3ac:	20 e0       	ldi	r18, 0x00	; 0
- 3ae:	0e c0       	rjmp	.+28     	; 0x3cc <serial_read+0x28>
+ 3e4:	90 91 74 00 	lds	r25, 0x0074
+ 3e8:	99 23       	and	r25, r25
+ 3ea:	11 f4       	brne	.+4      	; 0x3f0 <serial_read+0xc>
+ 3ec:	20 e0       	ldi	r18, 0x00	; 0
+ 3ee:	0e c0       	rjmp	.+28     	; 0x40c <serial_read+0x28>
   {
     return 0;
   }
   char value = serial_buffer[0];
- 3b0:	20 91 6e 00 	lds	r18, 0x006E
- 3b4:	ee e6       	ldi	r30, 0x6E	; 110
- 3b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 3f0:	20 91 86 00 	lds	r18, 0x0086
+ 3f4:	e6 e8       	ldi	r30, 0x86	; 134
+ 3f6:	f0 e0       	ldi	r31, 0x00	; 0
   for(char i = 1; i < SERIAL_BUFFER_LENGTH; i++)
   {
     serial_buffer[i-1] = serial_buffer[i];
- 3b8:	81 81       	ldd	r24, Z+1	; 0x01
- 3ba:	81 93       	st	Z+, r24
+ 3f8:	81 81       	ldd	r24, Z+1	; 0x01
+ 3fa:	81 93       	st	Z+, r24
   if(serial_buffer_pos == 0)
   {
     return 0;
   }
   char value = serial_buffer[0];
   for(char i = 1; i < SERIAL_BUFFER_LENGTH; i++)
- 3bc:	80 e0       	ldi	r24, 0x00	; 0
- 3be:	ed 37       	cpi	r30, 0x7D	; 125
- 3c0:	f8 07       	cpc	r31, r24
- 3c2:	d1 f7       	brne	.-12     	; 0x3b8 <serial_read+0x14>
+ 3fc:	80 e0       	ldi	r24, 0x00	; 0
+ 3fe:	e5 39       	cpi	r30, 0x95	; 149
+ 400:	f8 07       	cpc	r31, r24
+ 402:	d1 f7       	brne	.-12     	; 0x3f8 <serial_read+0x14>
   {
     serial_buffer[i-1] = serial_buffer[i];
   }
   serial_buffer[15] = 0;
- 3c4:	10 82       	st	Z, r1
+ 404:	10 82       	st	Z, r1
   serial_buffer_pos--;
- 3c6:	91 50       	subi	r25, 0x01	; 1
- 3c8:	90 93 6c 00 	sts	0x006C, r25
+ 406:	91 50       	subi	r25, 0x01	; 1
+ 408:	90 93 74 00 	sts	0x0074, r25
 
   return value;
 }
- 3cc:	82 2f       	mov	r24, r18
- 3ce:	08 95       	ret
+ 40c:	82 2f       	mov	r24, r18
+ 40e:	08 95       	ret
 
-000003d0 <serial_read_buffer>:
+00000410 <serial_read_buffer>:
 
 //Buffered read into user buffer
 unsigned int serial_read_buffer(char* data, int len)
 {
- 3d0:	ef 92       	push	r14
- 3d2:	ff 92       	push	r15
- 3d4:	0f 93       	push	r16
- 3d6:	1f 93       	push	r17
- 3d8:	cf 93       	push	r28
- 3da:	df 93       	push	r29
- 3dc:	7c 01       	movw	r14, r24
- 3de:	8b 01       	movw	r16, r22
- 3e0:	c0 e0       	ldi	r28, 0x00	; 0
- 3e2:	d0 e0       	ldi	r29, 0x00	; 0
- 3e4:	0a c0       	rjmp	.+20     	; 0x3fa <serial_read_buffer+0x2a>
+ 410:	ef 92       	push	r14
+ 412:	ff 92       	push	r15
+ 414:	0f 93       	push	r16
+ 416:	1f 93       	push	r17
+ 418:	cf 93       	push	r28
+ 41a:	df 93       	push	r29
+ 41c:	7c 01       	movw	r14, r24
+ 41e:	8b 01       	movw	r16, r22
+ 420:	c0 e0       	ldi	r28, 0x00	; 0
+ 422:	d0 e0       	ldi	r29, 0x00	; 0
+ 424:	0a c0       	rjmp	.+20     	; 0x43a <serial_read_buffer+0x2a>
 	int i = 0;
 	for(; i < len; i++)
 	{
 		if(serial_available() > 0)
- 3e6:	80 91 6c 00 	lds	r24, 0x006C
- 3ea:	88 23       	and	r24, r24
- 3ec:	49 f0       	breq	.+18     	; 0x400 <serial_read_buffer+0x30>
+ 426:	80 91 74 00 	lds	r24, 0x0074
+ 42a:	88 23       	and	r24, r24
+ 42c:	49 f0       	breq	.+18     	; 0x440 <serial_read_buffer+0x30>
 		{
 			data[i] = serial_read();
- 3ee:	da df       	rcall	.-76     	; 0x3a4 <serial_read>
- 3f0:	f7 01       	movw	r30, r14
- 3f2:	ec 0f       	add	r30, r28
- 3f4:	fd 1f       	adc	r31, r29
- 3f6:	80 83       	st	Z, r24
+ 42e:	da df       	rcall	.-76     	; 0x3e4 <serial_read>
+ 430:	f7 01       	movw	r30, r14
+ 432:	ec 0f       	add	r30, r28
+ 434:	fd 1f       	adc	r31, r29
+ 436:	80 83       	st	Z, r24
 
 //Buffered read into user buffer
 unsigned int serial_read_buffer(char* data, int len)
 {
 	int i = 0;
 	for(; i < len; i++)
- 3f8:	21 96       	adiw	r28, 0x01	; 1
- 3fa:	c0 17       	cp	r28, r16
- 3fc:	d1 07       	cpc	r29, r17
- 3fe:	9c f3       	brlt	.-26     	; 0x3e6 <serial_read_buffer+0x16>
+ 438:	21 96       	adiw	r28, 0x01	; 1
+ 43a:	c0 17       	cp	r28, r16
+ 43c:	d1 07       	cpc	r29, r17
+ 43e:	9c f3       	brlt	.-26     	; 0x426 <serial_read_buffer+0x16>
 		else
 		{
 			return i;
 		}
 	}
 	return i;
- 400:	ce 01       	movw	r24, r28
+ 440:	ce 01       	movw	r24, r28
 }
- 402:	df 91       	pop	r29
- 404:	cf 91       	pop	r28
- 406:	1f 91       	pop	r17
- 408:	0f 91       	pop	r16
- 40a:	ff 90       	pop	r15
- 40c:	ef 90       	pop	r14
- 40e:	08 95       	ret
+ 442:	df 91       	pop	r29
+ 444:	cf 91       	pop	r28
+ 446:	1f 91       	pop	r17
+ 448:	0f 91       	pop	r16
+ 44a:	ff 90       	pop	r15
+ 44c:	ef 90       	pop	r14
+ 44e:	08 95       	ret
 
-00000410 <serial_flush>:
+00000450 <serial_flush>:
 
 //Deletes all items in the buffer
 void serial_flush()
 {
   serial_buffer_pos = 0;
- 410:	10 92 6c 00 	sts	0x006C, r1
+ 450:	10 92 74 00 	sts	0x0074, r1
 }
- 414:	08 95       	ret
+ 454:	08 95       	ret
 
-00000416 <serial_transmit_byte>:
+00000456 <serial_transmit_byte>:
 
 void serial_transmit_byte(char data)
 {
 	//Wait for empty transmit buffer
 	while(!(UCSRA & (1<<UDRE)));
- 416:	5d 9b       	sbis	0x0b, 5	; 11
- 418:	fe cf       	rjmp	.-4      	; 0x416 <serial_transmit_byte>
+ 456:	5d 9b       	sbis	0x0b, 5	; 11
+ 458:	fe cf       	rjmp	.-4      	; 0x456 <serial_transmit_byte>
 
 	//Put data into buffer, send data
 	UDR = data;
- 41a:	8c b9       	out	0x0c, r24	; 12
+ 45a:	8c b9       	out	0x0c, r24	; 12
 }
- 41c:	08 95       	ret
+ 45c:	08 95       	ret
 
-0000041e <serial_transmit_data>:
+0000045e <serial_transmit_data>:
 
 void serial_transmit_data(char* buf, int len)
 {
- 41e:	20 e0       	ldi	r18, 0x00	; 0
- 420:	30 e0       	ldi	r19, 0x00	; 0
- 422:	09 c0       	rjmp	.+18     	; 0x436 <serial_transmit_data+0x18>
+ 45e:	20 e0       	ldi	r18, 0x00	; 0
+ 460:	30 e0       	ldi	r19, 0x00	; 0
+ 462:	09 c0       	rjmp	.+18     	; 0x476 <serial_transmit_data+0x18>
 	for(int i = 0; i < len; i++)
 	{
 		serial_transmit_byte(buf[i]);
- 424:	fc 01       	movw	r30, r24
- 426:	e2 0f       	add	r30, r18
- 428:	f3 1f       	adc	r31, r19
- 42a:	e0 81       	ld	r30, Z
+ 464:	fc 01       	movw	r30, r24
+ 466:	e2 0f       	add	r30, r18
+ 468:	f3 1f       	adc	r31, r19
+ 46a:	e0 81       	ld	r30, Z
 }
 
 void serial_transmit_byte(char data)
 {
 	//Wait for empty transmit buffer
 	while(!(UCSRA & (1<<UDRE)));
- 42c:	5d 9b       	sbis	0x0b, 5	; 11
- 42e:	fe cf       	rjmp	.-4      	; 0x42c <serial_transmit_data+0xe>
+ 46c:	5d 9b       	sbis	0x0b, 5	; 11
+ 46e:	fe cf       	rjmp	.-4      	; 0x46c <serial_transmit_data+0xe>
 
 	//Put data into buffer, send data
 	UDR = data;
- 430:	ec b9       	out	0x0c, r30	; 12
+ 470:	ec b9       	out	0x0c, r30	; 12
 }
 
 void serial_transmit_data(char* buf, int len)
 {
 	for(int i = 0; i < len; i++)
- 432:	2f 5f       	subi	r18, 0xFF	; 255
- 434:	3f 4f       	sbci	r19, 0xFF	; 255
- 436:	26 17       	cp	r18, r22
- 438:	37 07       	cpc	r19, r23
- 43a:	a4 f3       	brlt	.-24     	; 0x424 <serial_transmit_data+0x6>
+ 472:	2f 5f       	subi	r18, 0xFF	; 255
+ 474:	3f 4f       	sbci	r19, 0xFF	; 255
+ 476:	26 17       	cp	r18, r22
+ 478:	37 07       	cpc	r19, r23
+ 47a:	a4 f3       	brlt	.-24     	; 0x464 <serial_transmit_data+0x6>
 	{
 		serial_transmit_byte(buf[i]);
 	}
 }
- 43c:	08 95       	ret
+ 47c:	08 95       	ret
 
-0000043e <serial_print>:
+0000047e <serial_print>:
 
 void serial_print(char* text)
 {
- 43e:	fc 01       	movw	r30, r24
- 440:	04 c0       	rjmp	.+8      	; 0x44a <serial_print+0xc>
+ 47e:	fc 01       	movw	r30, r24
+ 480:	04 c0       	rjmp	.+8      	; 0x48a <serial_print+0xc>
 }
 
 void serial_transmit_byte(char data)
 {
 	//Wait for empty transmit buffer
 	while(!(UCSRA & (1<<UDRE)));
- 442:	5d 9b       	sbis	0x0b, 5	; 11
- 444:	fe cf       	rjmp	.-4      	; 0x442 <serial_print+0x4>
+ 482:	5d 9b       	sbis	0x0b, 5	; 11
+ 484:	fe cf       	rjmp	.-4      	; 0x482 <serial_print+0x4>
 
 	//Put data into buffer, send data
 	UDR = data;
- 446:	8c b9       	out	0x0c, r24	; 12
- 448:	31 96       	adiw	r30, 0x01	; 1
+ 486:	8c b9       	out	0x0c, r24	; 12
+ 488:	31 96       	adiw	r30, 0x01	; 1
 }
 
 void serial_print(char* text)
 {
 	int pos = 0;
 	while(text[pos] != '\0')
- 44a:	80 81       	ld	r24, Z
- 44c:	88 23       	and	r24, r24
- 44e:	c9 f7       	brne	.-14     	; 0x442 <serial_print+0x4>
+ 48a:	80 81       	ld	r24, Z
+ 48c:	88 23       	and	r24, r24
+ 48e:	c9 f7       	brne	.-14     	; 0x482 <serial_print+0x4>
 	{
 		serial_transmit_byte(text[pos]);
 		pos++;
 	}
 }
- 450:	08 95       	ret
+ 490:	08 95       	ret
 
-00000452 <USI_I2C_Init>:
-//USI I2C Initialize
-//  1. master - Set to 0 for slave, set to 1 for master
-//  2. address - If slave, this parameter is the slave address
-void USI_I2C_Init(char master, char address)
+00000492 <USI_I2C_Init>:
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void USI_I2C_Init(char address)
 {
-	DDR_USI  |= (1 << PORT_USI_SDA) | (1 << PORT_USI_SCL);
- 452:	97 b3       	in	r25, 0x17	; 23
- 454:	90 6a       	ori	r25, 0xA0	; 160
- 456:	97 bb       	out	0x17, r25	; 23
-	PORT_USI |= (1 << PORT_USI_SCL);
- 458:	c7 9a       	sbi	0x18, 7	; 24
-	PORT_USI |= (1 << PORT_USI_SDA);
- 45a:	c5 9a       	sbi	0x18, 5	; 24
+	PORT_USI &= ~(1 << PORT_USI_SCL);
+ 492:	c7 98       	cbi	0x18, 7	; 24
+	PORT_USI &= ~(1 << PORT_USI_SDA);
+ 494:	c5 98       	cbi	0x18, 5	; 24
+
+	usi_i2c_slave_address = address;
+ 496:	80 93 96 00 	sts	0x0096, r24
+
+	USI_SET_BOTH_INPUT();
+ 49a:	87 b3       	in	r24, 0x17	; 23
+ 49c:	8f 75       	andi	r24, 0x5F	; 95
+ 49e:	87 bb       	out	0x17, r24	; 23
 	
-
-	if(master == 0)
- 45c:	88 23       	and	r24, r24
- 45e:	29 f4       	brne	.+10     	; 0x46a <USI_I2C_Init+0x18>
-	{
-		usi_i2c_slave_address = address;
- 460:	60 93 7e 00 	sts	0x007E, r22
-		DDR_USI &= ~(1 << PORT_USI_SDA);
- 464:	bd 98       	cbi	0x17, 5	; 23
-		//DDR_USI &= ~(1 << PORT_USI_SCL);
-		USICR = (1 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (0 << USICLK) | (0 << USITC);
- 466:	88 ea       	ldi	r24, 0xA8	; 168
- 468:	03 c0       	rjmp	.+6      	; 0x470 <USI_I2C_Init+0x1e>
-		USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF) | (1 << USIDC);
-	}
-	else
-	{
-		USIDR = 0xFF;
- 46a:	8f ef       	ldi	r24, 0xFF	; 255
- 46c:	8f b9       	out	0x0f, r24	; 15
-		USICR = (0 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (1 << USICLK) | (0 << USITC);
- 46e:	8a e2       	ldi	r24, 0x2A	; 42
- 470:	8d b9       	out	0x0d, r24	; 13
-		USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF)  | (1 << USIDC)  | (0x00 << USICNT0);
- 472:	80 ef       	ldi	r24, 0xF0	; 240
- 474:	8e b9       	out	0x0e, r24	; 14
- 476:	08 95       	ret
-
-00000478 <USI_I2C_Master_Transfer>:
-	}
+	USICR = (1 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (0 << USICLK) | (0 << USITC);
+ 4a0:	88 ea       	ldi	r24, 0xA8	; 168
+ 4a2:	8d b9       	out	0x0d, r24	; 13
+	USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF) | (1 << USIDC);
+ 4a4:	80 ef       	ldi	r24, 0xF0	; 240
+ 4a6:	8e b9       	out	0x0e, r24	; 14
 }
+ 4a8:	08 95       	ret
 
-char USI_I2C_Master_Transfer(char temp)
-{
-	USISR = temp;				//Set USISR as requested by calling function
- 478:	8e b9       	out	0x0e, r24	; 14
-    can be achieved.
-*/
-void
-_delay_loop_1(uint8_t __count)
-{
-	__asm__ volatile (
- 47a:	3f e1       	ldi	r19, 0x1F	; 31
-
-	// Shift Data
-	do
-	{
-		_delay_us (I2C_TLOW);
-		USICR = temp;				//SCL Positive Edge
- 47c:	9b e2       	ldi	r25, 0x2B	; 43
- 47e:	2a e1       	ldi	r18, 0x1A	; 26
- 480:	83 2f       	mov	r24, r19
- 482:	8a 95       	dec	r24
- 484:	f1 f7       	brne	.-4      	; 0x482 <USI_I2C_Master_Transfer+0xa>
- 486:	9d b9       	out	0x0d, r25	; 13
-		while (!(PIN_USI&(1<<PIN_USI_SCL)));	//Wait for SCL to go high
- 488:	b7 9b       	sbis	0x16, 7	; 22
- 48a:	fe cf       	rjmp	.-4      	; 0x488 <USI_I2C_Master_Transfer+0x10>
- 48c:	82 2f       	mov	r24, r18
- 48e:	8a 95       	dec	r24
- 490:	f1 f7       	brne	.-4      	; 0x48e <USI_I2C_Master_Transfer+0x16>
-		_delay_us (I2C_THIGH);
-		USICR = temp;				//SCL Negative Edge
- 492:	9d b9       	out	0x0d, r25	; 13
-	} while (!(USISR&(1<<USIOIF)));			//Do until transfer is complete
- 494:	76 9b       	sbis	0x0e, 6	; 14
- 496:	f4 cf       	rjmp	.-24     	; 0x480 <USI_I2C_Master_Transfer+0x8>
- 498:	8f e1       	ldi	r24, 0x1F	; 31
- 49a:	8a 95       	dec	r24
- 49c:	f1 f7       	brne	.-4      	; 0x49a <USI_I2C_Master_Transfer+0x22>
-	
-	_delay_us (I2C_TLOW);
-	temp = USIDR;
- 49e:	8f b1       	in	r24, 0x0f	; 15
-	USIDR = 0xFF;
- 4a0:	9f ef       	ldi	r25, 0xFF	; 255
- 4a2:	9f b9       	out	0x0f, r25	; 15
-	DDR_USI |= (1<<PORT_USI_SDA);			//Set SDA as output			
- 4a4:	bd 9a       	sbi	0x17, 5	; 23
-
-	return temp;					//Return data from USIDR
-}
- 4a6:	08 95       	ret
-
-000004a8 <USI_I2C_Master_Transceiver_Start>:
-
-char USI_I2C_Master_Transceiver_Start(char *msg, char msg_size)
-{
- 4a8:	0f 93       	push	r16
- 4aa:	1f 93       	push	r17
- 4ac:	cf 93       	push	r28
- 4ae:	df 93       	push	r29
- 4b0:	fc 01       	movw	r30, r24
- 4b2:	16 2f       	mov	r17, r22
-	USI_I2C_Master_State.address_mode = 1;
- 4b4:	20 91 80 00 	lds	r18, 0x0080
- 4b8:	92 2f       	mov	r25, r18
- 4ba:	91 60       	ori	r25, 0x01	; 1
- 4bc:	90 93 80 00 	sts	0x0080, r25
-
-	if(!(*msg & 0x01)) // Check if message is read/write
- 4c0:	80 81       	ld	r24, Z
- 4c2:	80 fd       	sbrc	r24, 0
- 4c4:	04 c0       	rjmp	.+8      	; 0x4ce <USI_I2C_Master_Transceiver_Start+0x26>
-	{
-		USI_I2C_Master_State.write_mode = 1;
- 4c6:	23 60       	ori	r18, 0x03	; 3
- 4c8:	20 93 80 00 	sts	0x0080, r18
- 4cc:	03 c0       	rjmp	.+6      	; 0x4d4 <USI_I2C_Master_Transceiver_Start+0x2c>
-	}
-	else
-	{
-		USI_I2C_Master_State.write_mode = 0;
- 4ce:	9d 7f       	andi	r25, 0xFD	; 253
- 4d0:	90 93 80 00 	sts	0x0080, r25
-	}
-	
-	PORT_USI |= (1<<PORT_USI_SCL);		//Pull SCL High
- 4d4:	c7 9a       	sbi	0x18, 7	; 24
-	
-	while (!(PIN_USI & (1<<PIN_USI_SCL)));	//Wait for SCL to go high
- 4d6:	b7 9b       	sbis	0x16, 7	; 22
- 4d8:	fe cf       	rjmp	.-4      	; 0x4d6 <USI_I2C_Master_Transceiver_Start+0x2e>
- 4da:	8f e1       	ldi	r24, 0x1F	; 31
- 4dc:	98 2f       	mov	r25, r24
- 4de:	9a 95       	dec	r25
- 4e0:	f1 f7       	brne	.-4      	; 0x4de <USI_I2C_Master_Transceiver_Start+0x36>
-	#else
-		_delay_us (I2C_TLOW);
-	#endif
-
-	//Send Start Condition
-	PORT_USI &= ~(1<<PORT_USI_SDA);		//Pull SDA low
- 4e2:	c5 98       	cbi	0x18, 5	; 24
- 4e4:	9a e1       	ldi	r25, 0x1A	; 26
- 4e6:	9a 95       	dec	r25
- 4e8:	f1 f7       	brne	.-4      	; 0x4e6 <USI_I2C_Master_Transceiver_Start+0x3e>
-	_delay_us (I2C_THIGH);
-	PORT_USI &= ~(1<<PORT_USI_SCL);		//Pull SCL low
- 4ea:	c7 98       	cbi	0x18, 7	; 24
- 4ec:	8a 95       	dec	r24
- 4ee:	f1 f7       	brne	.-4      	; 0x4ec <USI_I2C_Master_Transceiver_Start+0x44>
-	_delay_us (I2C_TLOW);
-	PORT_USI |= (1<<PORT_USI_SDA);		//Pull SDA high
- 4f0:	c5 9a       	sbi	0x18, 5	; 24
- 4f2:	ef 01       	movw	r28, r30
-			*(msg++) = USI_I2C_Master_Transfer(temp_USISR_8bit);
-			
-			// Read data then increment buffer
-			if(msg_size == 1)			//Last byte transmitted
-			{
-				USIDR = 0xFF;			//Load NACK to end transmission
- 4f4:	0f ef       	ldi	r16, 0xFF	; 255
-	_delay_us (I2C_TLOW);
-	PORT_USI |= (1<<PORT_USI_SDA);		//Pull SDA high
-	
-	do
-	{
-		if(USI_I2C_Master_State.address_mode || USI_I2C_Master_State.write_mode)
- 4f6:	80 91 80 00 	lds	r24, 0x0080
- 4fa:	83 70       	andi	r24, 0x03	; 3
- 4fc:	91 f0       	breq	.+36     	; 0x522 <USI_I2C_Master_Transceiver_Start+0x7a>
-		{
-			PORT_USI &= ~(1<<PORT_USI_SCL);		//Pull SCL low
- 4fe:	c7 98       	cbi	0x18, 7	; 24
-			USIDR = *(msg++);			// Load data then increment buffer
- 500:	88 81       	ld	r24, Y
- 502:	8f b9       	out	0x0f, r24	; 15
-			USI_I2C_Master_Transfer(temp_USISR_8bit);
- 504:	80 ef       	ldi	r24, 0xF0	; 240
- 506:	b8 df       	rcall	.-144    	; 0x478 <USI_I2C_Master_Transfer>
-
-			//Get Acknowledgement from slave
-			DDR_USI &= ~(1<<PORT_USI_SDA);		//Set SDA as input
- 508:	bd 98       	cbi	0x17, 5	; 23
-			if(USI_I2C_Master_Transfer (temp_USISR_1bit) & 0x01)
- 50a:	8e ef       	ldi	r24, 0xFE	; 254
- 50c:	b5 df       	rcall	.-150    	; 0x478 <USI_I2C_Master_Transfer>
- 50e:	80 ff       	sbrs	r24, 0
- 510:	02 c0       	rjmp	.+4      	; 0x516 <USI_I2C_Master_Transceiver_Start+0x6e>
- 512:	80 e0       	ldi	r24, 0x00	; 0
- 514:	21 c0       	rjmp	.+66     	; 0x558 <USI_I2C_Master_Transceiver_Start+0xb0>
-			{
-				return 0;
-			}
-			USI_I2C_Master_State.address_mode = 0;
- 516:	80 91 80 00 	lds	r24, 0x0080
- 51a:	8e 7f       	andi	r24, 0xFE	; 254
- 51c:	80 93 80 00 	sts	0x0080, r24
- 520:	0b c0       	rjmp	.+22     	; 0x538 <USI_I2C_Master_Transceiver_Start+0x90>
-		}
-
-		else
-		{
-			DDR_USI &= ~(1<<PORT_USI_SDA);		//Set SDA as input
- 522:	bd 98       	cbi	0x17, 5	; 23
-			*(msg++) = USI_I2C_Master_Transfer(temp_USISR_8bit);
- 524:	80 ef       	ldi	r24, 0xF0	; 240
- 526:	a8 df       	rcall	.-176    	; 0x478 <USI_I2C_Master_Transfer>
- 528:	88 83       	st	Y, r24
-			
-			// Read data then increment buffer
-			if(msg_size == 1)			//Last byte transmitted
- 52a:	11 30       	cpi	r17, 0x01	; 1
- 52c:	11 f4       	brne	.+4      	; 0x532 <USI_I2C_Master_Transceiver_Start+0x8a>
-			{
-				USIDR = 0xFF;			//Load NACK to end transmission
- 52e:	0f b9       	out	0x0f, r16	; 15
- 530:	01 c0       	rjmp	.+2      	; 0x534 <USI_I2C_Master_Transceiver_Start+0x8c>
-			}
-			else
-			{
-				USIDR = 0x00;			//Load ACK
- 532:	1f b8       	out	0x0f, r1	; 15
-			}
-			USI_I2C_Master_Transfer(temp_USISR_1bit);	//Output Acknowledgement
- 534:	8e ef       	ldi	r24, 0xFE	; 254
- 536:	a0 df       	rcall	.-192    	; 0x478 <USI_I2C_Master_Transfer>
-		}
-	}while(--msg_size);			//Do until all data is read/written
- 538:	11 50       	subi	r17, 0x01	; 1
- 53a:	21 96       	adiw	r28, 0x01	; 1
- 53c:	11 23       	and	r17, r17
- 53e:	d9 f6       	brne	.-74     	; 0x4f6 <USI_I2C_Master_Transceiver_Start+0x4e>
-
-	PORT_USI &= ~(1<<PIN_USI_SDA);           // Pull SDA low.
- 540:	c5 98       	cbi	0x18, 5	; 24
-
-	PORT_USI |= (1<<PIN_USI_SCL);            // Release SCL.
- 542:	c7 9a       	sbi	0x18, 7	; 24
-
-	while( !(PIN_USI & (1<<PIN_USI_SCL)) );  // Wait for SCL to go high.  
- 544:	b7 9b       	sbis	0x16, 7	; 22
- 546:	fe cf       	rjmp	.-4      	; 0x544 <USI_I2C_Master_Transceiver_Start+0x9c>
- 548:	8a e1       	ldi	r24, 0x1A	; 26
- 54a:	8a 95       	dec	r24
- 54c:	f1 f7       	brne	.-4      	; 0x54a <USI_I2C_Master_Transceiver_Start+0xa2>
-
-	_delay_us(I2C_THIGH);
-
-	PORT_USI |= (1<<PIN_USI_SDA);            // Release SDA.
- 54e:	c5 9a       	sbi	0x18, 5	; 24
- 550:	8f e1       	ldi	r24, 0x1F	; 31
- 552:	8a 95       	dec	r24
- 554:	f1 f7       	brne	.-4      	; 0x552 <USI_I2C_Master_Transceiver_Start+0xaa>
- 556:	81 e0       	ldi	r24, 0x01	; 1
-
-	_delay_us(I2C_TLOW);
-
-	return 1;
-}
- 558:	df 91       	pop	r29
- 55a:	cf 91       	pop	r28
- 55c:	1f 91       	pop	r17
- 55e:	0f 91       	pop	r16
- 560:	08 95       	ret
-
-00000562 <__vector_15>:
+000004aa <__vector_15>:
+//  reset the start condition detector to detect the next start condition.     //
+/////////////////////////////////////////////////////////////////////////////////
 
 ISR(USI_START_vect)
 
 {
- 562:	1f 92       	push	r1
- 564:	0f 92       	push	r0
- 566:	0f b6       	in	r0, 0x3f	; 63
- 568:	0f 92       	push	r0
- 56a:	11 24       	eor	r1, r1
- 56c:	8f 93       	push	r24
-
-	// set default starting conditions for new TWI package
+ 4aa:	1f 92       	push	r1
+ 4ac:	0f 92       	push	r0
+ 4ae:	0f b6       	in	r0, 0x3f	; 63
+ 4b0:	0f 92       	push	r0
+ 4b2:	11 24       	eor	r1, r1
+ 4b4:	8f 93       	push	r24
 
 	USI_I2C_Slave_State = USI_SLAVE_CHECK_ADDRESS;
- 56e:	10 92 7f 00 	sts	0x007F, r1
-	
+ 4b6:	10 92 98 00 	sts	0x0098, r1
 
-	usi_i2c_buffer_pos = 0;
- 572:	10 92 6d 00 	sts	0x006D, r1
 
-	// set SDA as input
-
-	DDR_USI &= ~( 1 << PORT_USI_SDA );
- 576:	bd 98       	cbi	0x17, 5	; 23
+	USI_SET_SDA_INPUT();
+ 4ba:	bd 98       	cbi	0x17, 5	; 23
 
 	// Condition as in Application Note AVR312 because the Stop Condition Flag is
 
 	// going to be set from the last TWI sequence
 
 	while((PIN_USI & (1 << PIN_USI_SCL)) && !((PIN_USI & (1 << PIN_USI_SDA))));
- 578:	b7 9b       	sbis	0x16, 7	; 22
- 57a:	02 c0       	rjmp	.+4      	; 0x580 <__vector_15+0x1e>
- 57c:	b5 9b       	sbis	0x16, 5	; 22
- 57e:	fc cf       	rjmp	.-8      	; 0x578 <__vector_15+0x16>
+ 4bc:	b7 9b       	sbis	0x16, 7	; 22
+ 4be:	02 c0       	rjmp	.+4      	; 0x4c4 <__vector_15+0x1a>
+ 4c0:	b5 9b       	sbis	0x16, 5	; 22
+ 4c2:	fc cf       	rjmp	.-8      	; 0x4bc <__vector_15+0x12>
 
 
 
 	if(!(PIN_USI & (1 << PIN_USI_SDA)))
- 580:	b5 99       	sbic	0x16, 5	; 22
- 582:	02 c0       	rjmp	.+4      	; 0x588 <__vector_15+0x26>
+ 4c4:	b5 99       	sbic	0x16, 5	; 22
+ 4c6:	02 c0       	rjmp	.+4      	; 0x4cc <__vector_15+0x22>
 
 	{
 
 		// a Stop Condition did not occur
 
-		USICR = (1 << USISIE) | (1 << USIOIE) | (1 << USIWM1) | (1 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (0 << USICLK) | (0 << USITC);
- 584:	88 ef       	ldi	r24, 0xF8	; 248
- 586:	01 c0       	rjmp	.+2      	; 0x58a <__vector_15+0x28>
+		USICR = USI_SLAVE_STOP_NOT_OCCUR_USICR;
+ 4c8:	88 ee       	ldi	r24, 0xE8	; 232
+ 4ca:	01 c0       	rjmp	.+2      	; 0x4ce <__vector_15+0x24>
+	else
 
 	{
-
 		// a Stop Condition did occur
 
-    	USICR = (1 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (0 << USICLK) | (0 << USITC);
- 588:	88 ea       	ldi	r24, 0xA8	; 168
- 58a:	8d b9       	out	0x0d, r24	; 13
+    	USICR = USI_SLAVE_STOP_DID_OCCUR_USICR;
+ 4cc:	88 eb       	ldi	r24, 0xB8	; 184
+ 4ce:	8d b9       	out	0x0d, r24	; 13
 
 	}
 
 
 
-	USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF) |(1 << USIDC) | (0x0 << USICNT0);
- 58c:	80 ef       	ldi	r24, 0xF0	; 240
- 58e:	8e b9       	out	0x0e, r24	; 14
+	USISR = USI_SLAVE_CLEAR_START_USISR;
+ 4d0:	80 ef       	ldi	r24, 0xF0	; 240
+ 4d2:	8e b9       	out	0x0e, r24	; 14
 
 }
- 590:	8f 91       	pop	r24
- 592:	0f 90       	pop	r0
- 594:	0f be       	out	0x3f, r0	; 63
- 596:	0f 90       	pop	r0
- 598:	1f 90       	pop	r1
- 59a:	18 95       	reti
+ 4d4:	8f 91       	pop	r24
+ 4d6:	0f 90       	pop	r0
+ 4d8:	0f be       	out	0x3f, r0	; 63
+ 4da:	0f 90       	pop	r0
+ 4dc:	1f 90       	pop	r1
+ 4de:	18 95       	reti
 
-0000059c <__vector_16>:
+000004e0 <__vector_16>:
+//  the I2C protocol for proper transmission.                                  //
+/////////////////////////////////////////////////////////////////////////////////
 
 ISR(USI_OVERFLOW_vect)
 
 {
- 59c:	1f 92       	push	r1
- 59e:	0f 92       	push	r0
- 5a0:	0f b6       	in	r0, 0x3f	; 63
- 5a2:	0f 92       	push	r0
- 5a4:	11 24       	eor	r1, r1
- 5a6:	8f 93       	push	r24
- 5a8:	9f 93       	push	r25
- 5aa:	ef 93       	push	r30
- 5ac:	ff 93       	push	r31
+ 4e0:	1f 92       	push	r1
+ 4e2:	0f 92       	push	r0
+ 4e4:	0f b6       	in	r0, 0x3f	; 63
+ 4e6:	0f 92       	push	r0
+ 4e8:	11 24       	eor	r1, r1
+ 4ea:	8f 93       	push	r24
+ 4ec:	9f 93       	push	r25
+ 4ee:	ef 93       	push	r30
+ 4f0:	ff 93       	push	r31
 	switch (USI_I2C_Slave_State)
- 5ae:	80 91 7f 00 	lds	r24, 0x007F
- 5b2:	82 30       	cpi	r24, 0x02	; 2
- 5b4:	59 f1       	breq	.+86     	; 0x60c <__vector_16+0x70>
- 5b6:	83 30       	cpi	r24, 0x03	; 3
- 5b8:	30 f4       	brcc	.+12     	; 0x5c6 <__vector_16+0x2a>
- 5ba:	88 23       	and	r24, r24
- 5bc:	59 f0       	breq	.+22     	; 0x5d4 <__vector_16+0x38>
- 5be:	81 30       	cpi	r24, 0x01	; 1
- 5c0:	09 f0       	breq	.+2      	; 0x5c4 <__vector_16+0x28>
- 5c2:	42 c0       	rjmp	.+132    	; 0x648 <__vector_16+0xac>
- 5c4:	20 c0       	rjmp	.+64     	; 0x606 <__vector_16+0x6a>
- 5c6:	84 30       	cpi	r24, 0x04	; 4
- 5c8:	39 f1       	breq	.+78     	; 0x618 <__vector_16+0x7c>
- 5ca:	84 30       	cpi	r24, 0x04	; 4
- 5cc:	d8 f0       	brcs	.+54     	; 0x604 <__vector_16+0x68>
- 5ce:	85 30       	cpi	r24, 0x05	; 5
- 5d0:	d9 f5       	brne	.+118    	; 0x648 <__vector_16+0xac>
- 5d2:	28 c0       	rjmp	.+80     	; 0x624 <__vector_16+0x88>
-
-	{
+ 4f2:	80 91 98 00 	lds	r24, 0x0098
+ 4f6:	82 30       	cpi	r24, 0x02	; 2
+ 4f8:	21 f1       	breq	.+72     	; 0x542 <__vector_16+0x62>
+ 4fa:	83 30       	cpi	r24, 0x03	; 3
+ 4fc:	30 f4       	brcc	.+12     	; 0x50a <__vector_16+0x2a>
+ 4fe:	88 23       	and	r24, r24
+ 500:	69 f0       	breq	.+26     	; 0x51c <__vector_16+0x3c>
+ 502:	81 30       	cpi	r24, 0x01	; 1
+ 504:	09 f0       	breq	.+2      	; 0x508 <__vector_16+0x28>
+ 506:	69 c0       	rjmp	.+210    	; 0x5da <__vector_16+0xfa>
+ 508:	28 c0       	rjmp	.+80     	; 0x55a <__vector_16+0x7a>
+ 50a:	84 30       	cpi	r24, 0x04	; 4
+ 50c:	09 f4       	brne	.+2      	; 0x510 <__vector_16+0x30>
+ 50e:	3f c0       	rjmp	.+126    	; 0x58e <__vector_16+0xae>
+ 510:	84 30       	cpi	r24, 0x04	; 4
+ 512:	e8 f0       	brcs	.+58     	; 0x54e <__vector_16+0x6e>
+ 514:	85 30       	cpi	r24, 0x05	; 5
+ 516:	09 f0       	breq	.+2      	; 0x51a <__vector_16+0x3a>
+ 518:	60 c0       	rjmp	.+192    	; 0x5da <__vector_16+0xfa>
+ 51a:	3f c0       	rjmp	.+126    	; 0x59a <__vector_16+0xba>
+		/////////////////////////////////////////////////////////////////////////
 
 		case USI_SLAVE_CHECK_ADDRESS:
 
-			if((USIDR == 0) || ((USIDR >> 1) == usi_i2c_slave_address))
- 5d4:	8f b1       	in	r24, 0x0f	; 15
- 5d6:	88 23       	and	r24, r24
- 5d8:	31 f0       	breq	.+12     	; 0x5e6 <__vector_16+0x4a>
- 5da:	8f b1       	in	r24, 0x0f	; 15
- 5dc:	86 95       	lsr	r24
- 5de:	90 91 7e 00 	lds	r25, 0x007E
- 5e2:	89 17       	cp	r24, r25
- 5e4:	81 f4       	brne	.+32     	; 0x606 <__vector_16+0x6a>
 
-			{
-				usi_i2c_buffer[usi_i2c_buffer_pos] = USIDR;
- 5e6:	80 91 6d 00 	lds	r24, 0x006D
- 5ea:	9f b1       	in	r25, 0x0f	; 15
- 5ec:	e8 2f       	mov	r30, r24
- 5ee:	f0 e0       	ldi	r31, 0x00	; 0
- 5f0:	ee 57       	subi	r30, 0x7E	; 126
- 5f2:	ff 4f       	sbci	r31, 0xFF	; 255
- 5f4:	90 83       	st	Z, r25
-				usi_i2c_buffer_pos++;
- 5f6:	8f 5f       	subi	r24, 0xFF	; 255
- 5f8:	80 93 6d 00 	sts	0x006D, r24
+			if((USIDR == 0) || ((USIDR >> 1) == usi_i2c_slave_address))
+ 51c:	8f b1       	in	r24, 0x0f	; 15
+ 51e:	88 23       	and	r24, r24
+ 520:	31 f0       	breq	.+12     	; 0x52e <__vector_16+0x4e>
+ 522:	8f b1       	in	r24, 0x0f	; 15
+ 524:	86 95       	lsr	r24
+ 526:	90 91 96 00 	lds	r25, 0x0096
+ 52a:	89 17       	cp	r24, r25
+ 52c:	99 f4       	brne	.+38     	; 0x554 <__vector_16+0x74>
+
+			{				
 				if (USIDR & 0x01)
- 5fc:	78 9b       	sbis	0x0f, 0	; 15
- 5fe:	1d c0       	rjmp	.+58     	; 0x63a <__vector_16+0x9e>
+ 52e:	78 9b       	sbis	0x0f, 0	; 15
+ 530:	02 c0       	rjmp	.+4      	; 0x536 <__vector_16+0x56>
 
 				{
-
 					USI_I2C_Slave_State = USI_SLAVE_SEND_DATA;
- 600:	81 e0       	ldi	r24, 0x01	; 1
- 602:	1c c0       	rjmp	.+56     	; 0x63c <__vector_16+0xa0>
-			break;
+ 532:	81 e0       	ldi	r24, 0x01	; 1
+ 534:	03 c0       	rjmp	.+6      	; 0x53c <__vector_16+0x5c>
+				}
+
+				else
+
+				{
+					USI_Slave_internal_address_set = 0;
+ 536:	10 92 76 00 	sts	0x0076, r1
+					USI_I2C_Slave_State = USI_SLAVE_RECV_DATA_WAIT;
+ 53a:	84 e0       	ldi	r24, 0x04	; 4
+ 53c:	80 93 98 00 	sts	0x0098, r24
+ 540:	48 c0       	rjmp	.+144    	; 0x5d2 <__vector_16+0xf2>
+		case USI_SLAVE_SEND_DATA_ACK_WAIT:
+
+			//After sending, immediately shut off PORT = 1 to prevent driving
+			//the line high (I2C should *NEVER* drive high, and could damage
+			//connected devices if operating at different voltage levels)
+			PORT_USI &= ~(1 << PORT_USI_SDA);
+ 542:	c5 98       	cbi	0x18, 5	; 24
 
 
-		case USI_SLAVE_CHECK_REPLY_FROM_SEND_DATA:
-
+			USI_I2C_Slave_State = USI_SLAVE_SEND_DATA_ACK_CHECK;
+ 544:	83 e0       	ldi	r24, 0x03	; 3
+ 546:	80 93 98 00 	sts	0x0098, r24
+			USI_SET_SDA_INPUT();
+ 54a:	bd 98       	cbi	0x17, 5	; 23
+ 54c:	44 c0       	rjmp	.+136    	; 0x5d6 <__vector_16+0xf6>
+		//  a reset to START conditions, if ACK, fall through into SEND_DATA   //
+		//  to continue sending data.                                          //
+		/////////////////////////////////////////////////////////////////////////
+		case USI_SLAVE_SEND_DATA_ACK_CHECK:
+			
 			if(USIDR)
- 604:	8f b1       	in	r24, 0x0f	; 15
+ 54e:	8f b1       	in	r24, 0x0f	; 15
+ 550:	88 23       	and	r24, r24
+ 552:	19 f0       	breq	.+6      	; 0x55a <__vector_16+0x7a>
+			{
+				//The master sent a NACK, indicating that it will not accept
+				//more data.  Reset into START condition state
+				USICR = USI_SLAVE_SET_START_COND_USICR;
+ 554:	88 ea       	ldi	r24, 0xA8	; 168
+ 556:	8d b9       	out	0x0d, r24	; 13
+ 558:	1e c0       	rjmp	.+60     	; 0x596 <__vector_16+0xb6>
+		//  enable data transmission in the next 8 clocks.  Set to wait 8      //
+		//  clocks and proceed to wait for ACK.                                //
+		/////////////////////////////////////////////////////////////////////////
+		case USI_SLAVE_SEND_DATA:
 
-				//The buffer is empty
+			if(USI_Slave_internal_address <= USI_SLAVE_REGISTER_COUNT)
+ 55a:	90 91 75 00 	lds	r25, 0x0075
+ 55e:	99 30       	cpi	r25, 0x09	; 9
+ 560:	60 f4       	brcc	.+24     	; 0x57a <__vector_16+0x9a>
+			{
+				USIDR = *(USI_Slave_register_buffer[USI_Slave_internal_address]);
+ 562:	e9 2f       	mov	r30, r25
+ 564:	f0 e0       	ldi	r31, 0x00	; 0
+ 566:	ee 0f       	add	r30, r30
+ 568:	ff 1f       	adc	r31, r31
+ 56a:	e7 56       	subi	r30, 0x67	; 103
+ 56c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 56e:	01 90       	ld	r0, Z+
+ 570:	f0 81       	ld	r31, Z
+ 572:	e0 2d       	mov	r30, r0
+ 574:	80 81       	ld	r24, Z
+ 576:	8f b9       	out	0x0f, r24	; 15
+ 578:	01 c0       	rjmp	.+2      	; 0x57c <__vector_16+0x9c>
+			}
+			else
+			{
+				USIDR = 0x00;
+ 57a:	1f b8       	out	0x0f, r1	; 15
+			}
+			USI_Slave_internal_address++;
+ 57c:	9f 5f       	subi	r25, 0xFF	; 255
+ 57e:	90 93 75 00 	sts	0x0075, r25
 
-				//Set USI to Start Condition Mode
 
-				USICR = (1 << USISIE) | (0 << USIOIE) | (1 << USIWM1) | (0 << USIWM0) | (1 << USICS1) | (0 << USICS0) | (0 << USICLK) | (0 << USITC);
- 606:	88 ea       	ldi	r24, 0xA8	; 168
- 608:	8d b9       	out	0x0d, r24	; 13
- 60a:	0a c0       	rjmp	.+20     	; 0x620 <__vector_16+0x84>
+			USI_I2C_Slave_State = USI_SLAVE_SEND_DATA_ACK_WAIT;
+ 582:	82 e0       	ldi	r24, 0x02	; 2
+ 584:	80 93 98 00 	sts	0x0098, r24
 
 
+			//To send data, DDR for SDA must be 1 (Output) and PORT for SDA
+			//must also be 1 (line drives low on USIDR MSB = 0 or PORT = 0)
 
-		case USI_SLAVE_REQUEST_REPLY_FROM_SEND_DATA:
+			USI_SET_SDA_OUTPUT();
+ 588:	bd 9a       	sbi	0x17, 5	; 23
+			PORT_USI |= (1 << PORT_USI_SDA);
+ 58a:	c5 9a       	sbi	0x18, 5	; 24
+ 58c:	04 c0       	rjmp	.+8      	; 0x596 <__vector_16+0xb6>
+		//  Prepares to wait 8 clocks to receive a data byte from the master.  //
+		/////////////////////////////////////////////////////////////////////////
 
-			USI_I2C_Slave_State = USI_SLAVE_CHECK_REPLY_FROM_SEND_DATA;
- 60c:	83 e0       	ldi	r24, 0x03	; 3
- 60e:	80 93 7f 00 	sts	0x007F, r24
+		case USI_SLAVE_RECV_DATA_WAIT:
+
+			USI_I2C_Slave_State = USI_SLAVE_RECV_DATA_ACK_SEND;
+ 58e:	85 e0       	ldi	r24, 0x05	; 5
+ 590:	80 93 98 00 	sts	0x0098, r24
+
+			USI_SET_SDA_INPUT();
+ 594:	bd 98       	cbi	0x17, 5	; 23
+
+			USISR = USI_SLAVE_COUNT_BYTE_USISR;
+ 596:	80 e7       	ldi	r24, 0x70	; 112
+ 598:	1f c0       	rjmp	.+62     	; 0x5d8 <__vector_16+0xf8>
+
+		case USI_SLAVE_RECV_DATA_ACK_SEND:
+
+
+
+			USI_I2C_Slave_State = USI_SLAVE_RECV_DATA_WAIT;
+ 59a:	84 e0       	ldi	r24, 0x04	; 4
+ 59c:	80 93 98 00 	sts	0x0098, r24
 
 			
-			//Set USI to read ACK
-			DDR_USI &= ~(1 << PORT_USI_SDA);
- 612:	bd 98       	cbi	0x17, 5	; 23
-
-			USIDR = 0;
- 614:	1f b8       	out	0x0f, r1	; 15
- 616:	16 c0       	rjmp	.+44     	; 0x644 <__vector_16+0xa8>
-
-
-
-		case USI_SLAVE_REQUEST_DATA:
-
-			USI_I2C_Slave_State = USI_SLAVE_GET_DATA_AND_SEND_ACK;
- 618:	85 e0       	ldi	r24, 0x05	; 5
- 61a:	80 93 7f 00 	sts	0x007F, r24
-
-			//Set USI to read data
-
-			DDR_USI &= ~( 1 << PORT_USI_SDA );
- 61e:	bd 98       	cbi	0x17, 5	; 23
-
-			USISR    = (0 << USISIF) | (1 << USIOIF) | (1 << USIPF) | (1 << USIDC) | (0x0 << USICNT0);
- 620:	80 e7       	ldi	r24, 0x70	; 112
- 622:	11 c0       	rjmp	.+34     	; 0x646 <__vector_16+0xaa>
-		case USI_SLAVE_GET_DATA_AND_SEND_ACK:
-
-			//Put data into buffer
-
-			//Not necessary, but prevents warnings
-			usi_i2c_buffer[usi_i2c_buffer_pos] = USIDR;
- 624:	80 91 6d 00 	lds	r24, 0x006D
- 628:	9f b1       	in	r25, 0x0f	; 15
- 62a:	e8 2f       	mov	r30, r24
- 62c:	f0 e0       	ldi	r31, 0x00	; 0
- 62e:	ee 57       	subi	r30, 0x7E	; 126
- 630:	ff 4f       	sbci	r31, 0xFF	; 255
- 632:	90 83       	st	Z, r25
-			usi_i2c_buffer_pos++;
- 634:	8f 5f       	subi	r24, 0xFF	; 255
- 636:	80 93 6d 00 	sts	0x006D, r24
-
-//			usi_i2c_buffer[ rxHead ] = USIDR;
-
+			if(USI_Slave_internal_address_set == 0)
+ 5a0:	80 91 76 00 	lds	r24, 0x0076
+ 5a4:	88 23       	and	r24, r24
+ 5a6:	39 f4       	brne	.+14     	; 0x5b6 <__vector_16+0xd6>
+			{
+				USI_Slave_internal_address = USIDR;
+ 5a8:	8f b1       	in	r24, 0x0f	; 15
+ 5aa:	80 93 75 00 	sts	0x0075, r24
+				USI_Slave_internal_address_set = 1;
+ 5ae:	81 e0       	ldi	r24, 0x01	; 1
+ 5b0:	80 93 76 00 	sts	0x0076, r24
+ 5b4:	0e c0       	rjmp	.+28     	; 0x5d2 <__vector_16+0xf2>
+			}
+			else if(USI_Slave_internal_address <= USI_SLAVE_REGISTER_COUNT)
+ 5b6:	e0 91 75 00 	lds	r30, 0x0075
+ 5ba:	e9 30       	cpi	r30, 0x09	; 9
+ 5bc:	50 f4       	brcc	.+20     	; 0x5d2 <__vector_16+0xf2>
+			{
+				*(USI_Slave_register_buffer[USI_Slave_internal_address]) = USIDR;
+ 5be:	8f b1       	in	r24, 0x0f	; 15
+ 5c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 5c2:	ee 0f       	add	r30, r30
+ 5c4:	ff 1f       	adc	r31, r31
+ 5c6:	e7 56       	subi	r30, 0x67	; 103
+ 5c8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5ca:	01 90       	ld	r0, Z+
+ 5cc:	f0 81       	ld	r31, Z
+ 5ce:	e0 2d       	mov	r30, r0
+ 5d0:	80 83       	st	Z, r24
+			}
 			
-
-			USI_I2C_Slave_State = USI_SLAVE_REQUEST_DATA;
- 63a:	84 e0       	ldi	r24, 0x04	; 4
- 63c:	80 93 7f 00 	sts	0x007F, r24
-
-
-			//Set USI to send ACK
-
 			USIDR = 0;
- 640:	1f b8       	out	0x0f, r1	; 15
+ 5d2:	1f b8       	out	0x0f, r1	; 15
 
-			DDR_USI |= ( 1 << PORT_USI_SDA );
- 642:	bd 9a       	sbi	0x17, 5	; 23
+			USI_SET_SDA_OUTPUT();
+ 5d4:	bd 9a       	sbi	0x17, 5	; 23
 
-			USISR = (0 << USISIF) | (1 << USIOIF) | (1 << USIPF)  | (1 << USIDC)  | (0x0E << USICNT0);
- 644:	8e e7       	ldi	r24, 0x7E	; 126
- 646:	8e b9       	out	0x0e, r24	; 14
+			USISR = USI_SLAVE_COUNT_ACK_USISR;
+ 5d6:	8e e7       	ldi	r24, 0x7E	; 126
+ 5d8:	8e b9       	out	0x0e, r24	; 14
 
 			break;
 
 	}
 
 }
- 648:	ff 91       	pop	r31
- 64a:	ef 91       	pop	r30
- 64c:	9f 91       	pop	r25
- 64e:	8f 91       	pop	r24
- 650:	0f 90       	pop	r0
- 652:	0f be       	out	0x3f, r0	; 63
- 654:	0f 90       	pop	r0
- 656:	1f 90       	pop	r1
- 658:	18 95       	reti
+ 5da:	ff 91       	pop	r31
+ 5dc:	ef 91       	pop	r30
+ 5de:	9f 91       	pop	r25
+ 5e0:	8f 91       	pop	r24
+ 5e2:	0f 90       	pop	r0
+ 5e4:	0f be       	out	0x3f, r0	; 63
+ 5e6:	0f 90       	pop	r0
+ 5e8:	1f 90       	pop	r1
+ 5ea:	18 95       	reti
 
-0000065a <__eerd_byte_tn2313>:
- 65a:	e1 99       	sbic	0x1c, 1	; 28
- 65c:	fe cf       	rjmp	.-4      	; 0x65a <__eerd_byte_tn2313>
- 65e:	1f ba       	out	0x1f, r1	; 31
- 660:	8e bb       	out	0x1e, r24	; 30
- 662:	e0 9a       	sbi	0x1c, 0	; 28
- 664:	99 27       	eor	r25, r25
- 666:	8d b3       	in	r24, 0x1d	; 29
- 668:	08 95       	ret
+000005ec <USI_I2C_Master_Transfer>:
+//  Transfers either 8 bits (data) or 1 bit (ACK/NACK) on the bus. //
+/////////////////////////////////////////////////////////////////////
 
-0000066a <__eewr_byte_tn2313>:
- 66a:	26 2f       	mov	r18, r22
+char USI_I2C_Master_Transfer(char USISR_temp)
+{
+	USISR = USISR_temp;								//Set USISR as requested by calling function
+ 5ec:	8e b9       	out	0x0e, r24	; 14
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 5ee:	3f e1       	ldi	r19, 0x1F	; 31
 
-0000066c <__eewr_r18_tn2313>:
- 66c:	e1 99       	sbic	0x1c, 1	; 28
- 66e:	fe cf       	rjmp	.-4      	; 0x66c <__eewr_r18_tn2313>
- 670:	1c ba       	out	0x1c, r1	; 28
- 672:	1f ba       	out	0x1f, r1	; 31
- 674:	8e bb       	out	0x1e, r24	; 30
- 676:	2d bb       	out	0x1d, r18	; 29
- 678:	0f b6       	in	r0, 0x3f	; 63
- 67a:	f8 94       	cli
- 67c:	e2 9a       	sbi	0x1c, 2	; 28
- 67e:	e1 9a       	sbi	0x1c, 1	; 28
- 680:	0f be       	out	0x3f, r0	; 63
- 682:	01 96       	adiw	r24, 0x01	; 1
- 684:	08 95       	ret
+	// Shift Data
+	do
+	{
+		USI_I2C_WAIT_LOW();
+		USI_CLOCK_STROBE();								//SCL Positive Edge
+ 5f0:	9b e2       	ldi	r25, 0x2B	; 43
+ 5f2:	2a e1       	ldi	r18, 0x1A	; 26
+ 5f4:	83 2f       	mov	r24, r19
+ 5f6:	8a 95       	dec	r24
+ 5f8:	f1 f7       	brne	.-4      	; 0x5f6 <USI_I2C_Master_Transfer+0xa>
+ 5fa:	9d b9       	out	0x0d, r25	; 13
+		while (!(PIN_USI&(1<<PIN_USI_SCL)));		//Wait for SCL to go high
+ 5fc:	b7 9b       	sbis	0x16, 7	; 22
+ 5fe:	fe cf       	rjmp	.-4      	; 0x5fc <USI_I2C_Master_Transfer+0x10>
+ 600:	82 2f       	mov	r24, r18
+ 602:	8a 95       	dec	r24
+ 604:	f1 f7       	brne	.-4      	; 0x602 <USI_I2C_Master_Transfer+0x16>
+		USI_I2C_WAIT_HIGH();
+		USI_CLOCK_STROBE();								//SCL Negative Edge
+ 606:	9d b9       	out	0x0d, r25	; 13
+	} while (!(USISR&(1<<USIOIF)));					//Do until transfer is complete
+ 608:	76 9b       	sbis	0x0e, 6	; 14
+ 60a:	f4 cf       	rjmp	.-24     	; 0x5f4 <USI_I2C_Master_Transfer+0x8>
+ 60c:	8f e1       	ldi	r24, 0x1F	; 31
+ 60e:	8a 95       	dec	r24
+ 610:	f1 f7       	brne	.-4      	; 0x60e <USI_I2C_Master_Transfer+0x22>
+	
+	USI_I2C_WAIT_LOW();
 
-00000686 <_exit>:
- 686:	f8 94       	cli
+	return USIDR;
+ 612:	8f b1       	in	r24, 0x0f	; 15
+}
+ 614:	08 95       	ret
 
-00000688 <__stop_program>:
- 688:	ff cf       	rjmp	.-2      	; 0x688 <__stop_program>
+00000616 <USI_I2C_Master_Start_Transmission>:
+
+char USI_I2C_Master_Start_Transmission(char *msg, char msg_size)
+{
+ 616:	ef 92       	push	r14
+ 618:	ff 92       	push	r15
+ 61a:	0f 93       	push	r16
+ 61c:	1f 93       	push	r17
+ 61e:	cf 93       	push	r28
+ 620:	df 93       	push	r29
+ 622:	ec 01       	movw	r28, r24
+ 624:	16 2f       	mov	r17, r22
+	USI_I2C_Master_State = USI_MASTER_ADDRESS;
+ 626:	10 92 aa 00 	sts	0x00AA, r1
+
+	/////////////////////////////////////////////////////////////////
+	//  Generate Start Condition                                   //
+	/////////////////////////////////////////////////////////////////
+
+	USI_SET_SCL_HIGH(); 						//Setting input makes line pull high
+ 62a:	c7 9a       	sbi	0x18, 7	; 24
+
+	while (!(PIN_USI & (1<<PIN_USI_SCL)));		//Wait for SCL to go high
+ 62c:	b7 9b       	sbis	0x16, 7	; 22
+ 62e:	fe cf       	rjmp	.-4      	; 0x62c <USI_I2C_Master_Start_Transmission+0x16>
+ 630:	8f e1       	ldi	r24, 0x1F	; 31
+ 632:	98 2f       	mov	r25, r24
+ 634:	9a 95       	dec	r25
+ 636:	f1 f7       	brne	.-4      	; 0x634 <USI_I2C_Master_Start_Transmission+0x1e>
+	#ifdef I2C_FAST_MODE
+		USI_I2C_WAIT_HIGH();
+	#else
+		USI_I2C_WAIT_LOW();
+	#endif
+	USI_SET_SDA_OUTPUT();
+ 638:	bd 9a       	sbi	0x17, 5	; 23
+	USI_SET_SCL_OUTPUT();
+ 63a:	bf 9a       	sbi	0x17, 7	; 23
+	USI_SET_SDA_LOW();
+ 63c:	c5 98       	cbi	0x18, 5	; 24
+ 63e:	9a e1       	ldi	r25, 0x1A	; 26
+ 640:	9a 95       	dec	r25
+ 642:	f1 f7       	brne	.-4      	; 0x640 <USI_I2C_Master_Start_Transmission+0x2a>
+	USI_I2C_WAIT_HIGH();
+	USI_SET_SCL_LOW();
+ 644:	c7 98       	cbi	0x18, 7	; 24
+ 646:	8a 95       	dec	r24
+ 648:	f1 f7       	brne	.-4      	; 0x646 <USI_I2C_Master_Start_Transmission+0x30>
+	USI_I2C_WAIT_LOW();
+	USI_SET_SDA_HIGH();
+ 64a:	c5 9a       	sbi	0x18, 5	; 24
+				{
+					USI_I2C_Master_State = USI_MASTER_WRITE;
+				}
+				else
+				{
+					USI_I2C_Master_State = USI_MASTER_READ;
+ 64c:	82 e0       	ldi	r24, 0x02	; 2
+ 64e:	e8 2e       	mov	r14, r24
+			case USI_MASTER_ADDRESS:
+
+				//Check if the message is a write operation or a read operation
+				if(!(*msg & 0x01))
+				{
+					USI_I2C_Master_State = USI_MASTER_WRITE;
+ 650:	ff 24       	eor	r15, r15
+ 652:	f3 94       	inc	r15
+
+				USI_SET_SDA_OUTPUT();
+				
+				if(msg_size == 1)
+				{
+					USIDR = 0xFF;			//Load NACK to end transmission
+ 654:	0f ef       	ldi	r16, 0xFF	; 255
+	
+	/////////////////////////////////////////////////////////////////
+
+	do
+	{
+		switch(USI_I2C_Master_State)
+ 656:	80 91 aa 00 	lds	r24, 0x00AA
+ 65a:	81 30       	cpi	r24, 0x01	; 1
+ 65c:	69 f0       	breq	.+26     	; 0x678 <USI_I2C_Master_Start_Transmission+0x62>
+ 65e:	81 30       	cpi	r24, 0x01	; 1
+ 660:	18 f0       	brcs	.+6      	; 0x668 <USI_I2C_Master_Start_Transmission+0x52>
+ 662:	82 30       	cpi	r24, 0x02	; 2
+ 664:	39 f5       	brne	.+78     	; 0x6b4 <USI_I2C_Master_Start_Transmission+0x9e>
+ 666:	19 c0       	rjmp	.+50     	; 0x69a <USI_I2C_Master_Start_Transmission+0x84>
+			//  read or write state as determined by the R/W bit.            //
+			///////////////////////////////////////////////////////////////////
+			case USI_MASTER_ADDRESS:
+
+				//Check if the message is a write operation or a read operation
+				if(!(*msg & 0x01))
+ 668:	88 81       	ld	r24, Y
+ 66a:	80 fd       	sbrc	r24, 0
+ 66c:	03 c0       	rjmp	.+6      	; 0x674 <USI_I2C_Master_Start_Transmission+0x5e>
+				{
+					USI_I2C_Master_State = USI_MASTER_WRITE;
+ 66e:	f0 92 aa 00 	sts	0x00AA, r15
+ 672:	02 c0       	rjmp	.+4      	; 0x678 <USI_I2C_Master_Start_Transmission+0x62>
+				}
+				else
+				{
+					USI_I2C_Master_State = USI_MASTER_READ;
+ 674:	e0 92 aa 00 	sts	0x00AA, r14
+			//  If no ACK, then reset and exit                               //
+			///////////////////////////////////////////////////////////////////
+			case USI_MASTER_WRITE:
+
+
+				USI_SET_SCL_LOW();
+ 678:	c7 98       	cbi	0x18, 7	; 24
+
+				USIDR = *(msg);				//Load data
+ 67a:	88 81       	ld	r24, Y
+ 67c:	8f b9       	out	0x0f, r24	; 15
+			
+				msg++;						//Increment buffer pointer
+
+				USI_I2C_Master_Transfer(USISR_TRANSFER_8_BIT);
+ 67e:	80 ef       	ldi	r24, 0xF0	; 240
+ 680:	b5 df       	rcall	.-150    	; 0x5ec <USI_I2C_Master_Transfer>
+
+				USI_SET_SDA_INPUT();
+ 682:	bd 98       	cbi	0x17, 5	; 23
+
+				if(USI_I2C_Master_Transfer(USISR_TRANSFER_1_BIT) & 0x01)
+ 684:	8e ef       	ldi	r24, 0xFE	; 254
+ 686:	b2 df       	rcall	.-156    	; 0x5ec <USI_I2C_Master_Transfer>
+ 688:	80 ff       	sbrs	r24, 0
+ 68a:	04 c0       	rjmp	.+8      	; 0x694 <USI_I2C_Master_Start_Transmission+0x7e>
+				{
+					USI_SET_SCL_HIGH();
+ 68c:	c7 9a       	sbi	0x18, 7	; 24
+					USI_SET_SDA_HIGH();
+ 68e:	c5 9a       	sbi	0x18, 5	; 24
+ 690:	80 e0       	ldi	r24, 0x00	; 0
+ 692:	20 c0       	rjmp	.+64     	; 0x6d4 <USI_I2C_Master_Start_Transmission+0xbe>
+
+				USI_SET_SCL_LOW();
+
+				USIDR = *(msg);				//Load data
+			
+				msg++;						//Increment buffer pointer
+ 694:	21 96       	adiw	r28, 0x01	; 1
+					USI_SET_SCL_HIGH();
+					USI_SET_SDA_HIGH();
+					return 0;
+				}
+
+				USI_SET_SDA_OUTPUT();
+ 696:	bd 9a       	sbi	0x17, 5	; 23
+ 698:	0d c0       	rjmp	.+26     	; 0x6b4 <USI_I2C_Master_Start_Transmission+0x9e>
+			// Read Operation                                                //
+			//  Reads a byte from the slave and sends ACK or NACK            //
+			///////////////////////////////////////////////////////////////////
+			case USI_MASTER_READ:
+
+				USI_SET_SDA_INPUT();
+ 69a:	bd 98       	cbi	0x17, 5	; 23
+
+				(*msg) = USI_I2C_Master_Transfer(USISR_TRANSFER_8_BIT);
+ 69c:	80 ef       	ldi	r24, 0xF0	; 240
+ 69e:	a6 df       	rcall	.-180    	; 0x5ec <USI_I2C_Master_Transfer>
+ 6a0:	88 83       	st	Y, r24
+			
+				msg++;
+
+				USI_SET_SDA_OUTPUT();
+ 6a2:	bd 9a       	sbi	0x17, 5	; 23
+				
+				if(msg_size == 1)
+ 6a4:	11 30       	cpi	r17, 0x01	; 1
+ 6a6:	11 f4       	brne	.+4      	; 0x6ac <USI_I2C_Master_Start_Transmission+0x96>
+				{
+					USIDR = 0xFF;			//Load NACK to end transmission
+ 6a8:	0f b9       	out	0x0f, r16	; 15
+ 6aa:	01 c0       	rjmp	.+2      	; 0x6ae <USI_I2C_Master_Start_Transmission+0x98>
+				}
+				else
+				{
+					USIDR = 0x00;			//Load ACK
+ 6ac:	1f b8       	out	0x0f, r1	; 15
+
+				USI_SET_SDA_INPUT();
+
+				(*msg) = USI_I2C_Master_Transfer(USISR_TRANSFER_8_BIT);
+			
+				msg++;
+ 6ae:	21 96       	adiw	r28, 0x01	; 1
+				else
+				{
+					USIDR = 0x00;			//Load ACK
+				}
+
+				USI_I2C_Master_Transfer(USISR_TRANSFER_1_BIT);
+ 6b0:	8e ef       	ldi	r24, 0xFE	; 254
+ 6b2:	9c df       	rcall	.-200    	; 0x5ec <USI_I2C_Master_Transfer>
+				break;
+		}
+
+	}while(--msg_size);			//Do until all data is read/written
+ 6b4:	11 50       	subi	r17, 0x01	; 1
+ 6b6:	79 f6       	brne	.-98     	; 0x656 <USI_I2C_Master_Start_Transmission+0x40>
+	
+	/////////////////////////////////////////////////////////////////
+	// Send Stop Condition                                         //
+	/////////////////////////////////////////////////////////////////
+
+	USI_SET_SDA_LOW();           				// Pull SDA low.
+ 6b8:	c5 98       	cbi	0x18, 5	; 24
+ 6ba:	8f e1       	ldi	r24, 0x1F	; 31
+ 6bc:	8a 95       	dec	r24
+ 6be:	f1 f7       	brne	.-4      	; 0x6bc <USI_I2C_Master_Start_Transmission+0xa6>
+	USI_I2C_WAIT_LOW();
+
+	USI_SET_SCL_INPUT();            				// Release SCL.
+ 6c0:	bf 98       	cbi	0x17, 7	; 23
+
+	while( !(PIN_USI & (1<<PIN_USI_SCL)) );  	// Wait for SCL to go high.  
+ 6c2:	b7 9b       	sbis	0x16, 7	; 22
+ 6c4:	fe cf       	rjmp	.-4      	; 0x6c2 <USI_I2C_Master_Start_Transmission+0xac>
+ 6c6:	8a e1       	ldi	r24, 0x1A	; 26
+ 6c8:	8a 95       	dec	r24
+ 6ca:	f1 f7       	brne	.-4      	; 0x6c8 <USI_I2C_Master_Start_Transmission+0xb2>
+
+	USI_I2C_WAIT_HIGH();
+	USI_SET_SDA_INPUT();            				// Release SDA.
+ 6cc:	bd 98       	cbi	0x17, 5	; 23
+
+	while( !(PIN_USI & (1<<PIN_USI_SDA)) );  	// Wait for SDA to go high. 
+ 6ce:	b5 9b       	sbis	0x16, 5	; 22
+ 6d0:	fe cf       	rjmp	.-4      	; 0x6ce <USI_I2C_Master_Start_Transmission+0xb8>
+ 6d2:	81 e0       	ldi	r24, 0x01	; 1
+
+	return 1;
+}
+ 6d4:	df 91       	pop	r29
+ 6d6:	cf 91       	pop	r28
+ 6d8:	1f 91       	pop	r17
+ 6da:	0f 91       	pop	r16
+ 6dc:	ff 90       	pop	r15
+ 6de:	ef 90       	pop	r14
+ 6e0:	08 95       	ret
+
+000006e2 <__eerd_byte_tn2313>:
+ 6e2:	e1 99       	sbic	0x1c, 1	; 28
+ 6e4:	fe cf       	rjmp	.-4      	; 0x6e2 <__eerd_byte_tn2313>
+ 6e6:	1f ba       	out	0x1f, r1	; 31
+ 6e8:	8e bb       	out	0x1e, r24	; 30
+ 6ea:	e0 9a       	sbi	0x1c, 0	; 28
+ 6ec:	99 27       	eor	r25, r25
+ 6ee:	8d b3       	in	r24, 0x1d	; 29
+ 6f0:	08 95       	ret
+
+000006f2 <__eewr_byte_tn2313>:
+ 6f2:	26 2f       	mov	r18, r22
+
+000006f4 <__eewr_r18_tn2313>:
+ 6f4:	e1 99       	sbic	0x1c, 1	; 28
+ 6f6:	fe cf       	rjmp	.-4      	; 0x6f4 <__eewr_r18_tn2313>
+ 6f8:	1c ba       	out	0x1c, r1	; 28
+ 6fa:	1f ba       	out	0x1f, r1	; 31
+ 6fc:	8e bb       	out	0x1e, r24	; 30
+ 6fe:	2d bb       	out	0x1d, r18	; 29
+ 700:	0f b6       	in	r0, 0x3f	; 63
+ 702:	f8 94       	cli
+ 704:	e2 9a       	sbi	0x1c, 2	; 28
+ 706:	e1 9a       	sbi	0x1c, 1	; 28
+ 708:	0f be       	out	0x3f, r0	; 63
+ 70a:	01 96       	adiw	r24, 0x01	; 1
+ 70c:	08 95       	ret
+
+0000070e <_exit>:
+ 70e:	f8 94       	cli
+
+00000710 <__stop_program>:
+ 710:	ff cf       	rjmp	.-2      	; 0x710 <__stop_program>

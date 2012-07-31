@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = UnipolarStepperDriver.o serial.o usi_i2c.o 
+OBJECTS = UnipolarStepperDriver.o serial.o usi_i2c_slave.o usi_i2c_master.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -52,7 +52,10 @@ UnipolarStepperDriver.o: ../UnipolarStepperDriver.c
 serial.o: ../serial.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-usi_i2c.o: ../usi_i2c.c
+usi_i2c_slave.o: ../usi_i2c_slave.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+usi_i2c_master.o: ../usi_i2c_master.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

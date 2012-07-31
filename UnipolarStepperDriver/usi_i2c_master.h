@@ -1,9 +1,17 @@
 /*-----------------------------------------------------*\
-|  USI I2C Master/Slave Driver - Adam Honse 2012	|
+|  USI I2C Slave Master                                 |
+|                                                       |
+| This library provides a robust I2C master protocol    |
+| implementation on top of Atmel's Universal Serial     |
+| Interface (USI) found in many ATTiny microcontrollers.|
+|                                                       |
+| Adam Honse (GitHub: CalcProgrammer1) - 7/29/2012      |
+|            -calcprogrammer1@gmail.com                 |
 \*-----------------------------------------------------*/
+#ifndef USI_I2C_MASTER_H
+#define USI_I2C_MASTER_H
 
 #include <avr/io.h>
-#include <avr/interrupt.h>
 #include <util/delay.h>
 
 //I2C Bus Specification v2.1 FAST mode timing limits
@@ -41,11 +49,8 @@
     #define PIN_USI_SCL         PINB7
 #endif
 
-//USI I2C Initialize
-//  1. master - Set to 0 for slave, set to 1 for master
-//  2. address - If slave, this parameter is the slave address
-void USI_I2C_Init(char master, char address);
-
 //USI I2C Master Transceiver Start
 // Starts the transceiver to send or receive data based on the r/w bit
 char USI_I2C_Master_Transceiver_Start(char *msg, char msg_size);
+
+#endif
